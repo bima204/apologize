@@ -59,8 +59,8 @@
       user-select: none;
     }
 
-    /* Ambient Fireworks & Petals Canvas */
-    #fx-canvas {
+    /* Ambient Falling Sakura Petals Canvas */
+    #petals-canvas {
       position: fixed;
       top: 0;
       left: 0;
@@ -182,10 +182,10 @@
 </head>
 <body class="relative flex flex-col items-center justify-center min-h-screen p-4 sm:p-6 antialiased selection:bg-pink-300 selection:text-neutral-900">
 
-  <!-- Ambient Fireworks & Petals Canvas -->
-  <canvas id="fx-canvas"></canvas>
+  <!-- Ambient Falling Sakura Petals Canvas -->
+  <canvas id="petals-canvas"></canvas>
 
-  <!-- Audio Element (Playing Kasih Putih smoothly in background once opened) -->
+  <!-- Audio Element (Kasih Putih smoothly in background once opened) -->
   <audio id="bg-audio" loop preload="auto">
     <source src="kasih-putih.mp3" type="audio/mpeg">
     <source src="https://archive.org/download/juicy-luicy-terlalu-tinggi-official-music-video/GLENN%20FREDLY%20-%20Kasih%20Putih.mp3" type="audio/mpeg">
@@ -344,18 +344,18 @@
   <div id="forgive-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/40 backdrop-blur-sm opacity-0 pointer-events-none transition-all duration-500">
     <div class="bg-gradient-to-b from-[#fffcfd] to-[#fff0f4] rounded-3xl p-6 sm:p-9 max-w-md w-full text-center shadow-2xl border border-pink-200 transform scale-90 transition-all duration-300 relative overflow-hidden">
       
-      <!-- Sparkle Corner Effects -->
+      <!-- Celebration Icon -->
       <div class="text-5xl mb-3 animate-bounce">
-        🎆💖🌸
+        🥰💖🌸
       </div>
       <h3 class="font-serif text-3xl text-neutral-900 font-bold mb-2">Yay! Thank You So Much, Flowee! 🥰</h3>
       <p class="font-sans text-sm text-neutral-600 leading-relaxed mb-6">
-        Hearing your forgiveness feels like the most breathtaking fireworks lighting up the night sky. I promise to always cherish you, make you smile, and never let you feel lonely again!
+        Hearing your forgiveness means the absolute world to me. I promise to always cherish you, make you smile, and never let you feel lonely again!
       </p>
 
       <div class="space-y-3">
-        <button id="grand-fireworks-btn" class="w-full py-3.5 rounded-2xl bg-gradient-to-r from-flowee-500 to-rose-600 hover:from-flowee-600 hover:to-rose-700 text-white font-sans text-sm font-semibold shadow-lg shadow-pink-500/30 transition-all active:scale-95 flex items-center justify-center gap-2">
-          <span>Light Up More Fireworks! 🎆</span>
+        <button id="celebrate-btn" class="w-full py-3.5 rounded-2xl bg-gradient-to-r from-flowee-500 to-rose-600 hover:from-flowee-600 hover:to-rose-700 text-white font-sans text-sm font-semibold shadow-lg shadow-pink-500/30 transition-all active:scale-95 flex items-center justify-center gap-2">
+          <span>Celebrate Our Love! 🌸✨</span>
         </button>
         <button id="close-modal-btn" class="w-full py-2.5 rounded-xl text-neutral-500 hover:text-neutral-800 font-sans text-xs font-medium transition-all">
           Hold you in a warm hug 🤍
@@ -371,19 +371,15 @@
   </div>
 
   <!-- ============================================== -->
-  <!-- JAVASCRIPT: FIREWORKS, PETALS & MUSIC ENGINE   -->
+  <!-- JAVASCRIPT: LIGHTWEIGHT SAKURA & MUSIC ENGINE  -->
   <!-- ============================================== -->
   <script>
     // ==============================================
-    // 1. ADVANCED FIREWORKS & SAKURA CANVAS ENGINE
+    // 1. LIGHTWEIGHT SAKURA PETALS CANVAS (60 FPS)
     // ==============================================
-    const canvas = document.getElementById('fx-canvas');
+    const canvas = document.getElementById('petals-canvas');
     const ctx = canvas.getContext('2d');
     let width, height;
-
-    // Controls whether fireworks and click-to-fireworks are active
-    // Activated ONLY AFTER the envelope is opened!
-    let fireworksActive = false;
 
     function resizeCanvas() {
       width = canvas.width = window.innerWidth;
@@ -392,140 +388,7 @@
     window.addEventListener('resize', resizeCanvas);
     resizeCanvas();
 
-    // Vibrant romantic color palettes for fireworks
-    const fireworkPalettes = [
-      ['#ff2a6d', '#ff6584', '#ff8fa3', '#ffffff'], // Romantic Rose & White
-      ['#e0245e', '#ff5a5f', '#ffb3c6', '#ffe066'], // Warm Pink & Gold
-      ['#9d4edd', '#c77dff', '#e0aaff', '#ffffff'], // Lavender Starlight
-      ['#ff007f', '#ff5400', '#ffd166', '#ffffff'], // Sunset Firework
-      ['#fb7192', '#f43f6e', '#fda4b8', '#ffffff'], // Classic Flowee Blossom
-    ];
-
-    let fireworksRockets = [];
-    let fireworkParticles = [];
     let sakuraPetals = [];
-
-    // --- Particle Class ---
-    class Particle {
-      constructor(x, y, vx, vy, color, isHeart = false) {
-        this.x = x;
-        this.y = y;
-        this.vx = vx;
-        this.vy = vy;
-        this.color = color;
-        this.alpha = 1;
-        this.decay = 0.012 + Math.random() * 0.016;
-        this.gravity = 0.045;
-        this.resistance = 0.96;
-        this.size = 2.4 + Math.random() * 2;
-        this.isHeart = isHeart;
-        this.flicker = Math.random() > 0.4;
-      }
-
-      update() {
-        this.vx *= this.resistance;
-        this.vy *= this.resistance;
-        this.vy += this.gravity;
-        this.x += this.vx;
-        this.y += this.vy;
-        this.alpha -= this.decay;
-      }
-
-      draw() {
-        if (this.alpha <= 0) return;
-        ctx.save();
-        ctx.globalAlpha = Math.max(0, this.alpha * (this.flicker && Math.random() > 0.3 ? 0.7 : 1));
-        ctx.fillStyle = this.color;
-        ctx.shadowBlur = 10;
-        ctx.shadowColor = this.color;
-
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-        ctx.fill();
-        ctx.restore();
-      }
-    }
-
-    // --- Rocket Class ---
-    class Rocket {
-      constructor(startX, startY, targetX, targetY, isHeartPattern = false) {
-        this.x = startX;
-        this.y = startY;
-        this.targetX = targetX;
-        this.targetY = targetY;
-        const angle = Math.atan2(targetY - startY, targetX - startX);
-        const distance = Math.hypot(targetX - startX, targetY - startY);
-        this.speed = Math.min(13, distance / 28);
-        this.vx = Math.cos(angle) * this.speed;
-        this.vy = Math.sin(angle) * this.speed;
-        this.palette = fireworkPalettes[Math.floor(Math.random() * fireworkPalettes.length)];
-        this.isHeartPattern = isHeartPattern;
-        this.exploded = false;
-        this.trail = [];
-      }
-
-      update() {
-        this.trail.push({ x: this.x, y: this.y, alpha: 0.8 });
-        if (this.trail.length > 7) this.trail.shift();
-
-        this.x += this.vx;
-        this.y += this.vy;
-
-        // Check if arrived near target
-        if (this.vy >= 0 || this.y <= this.targetY || Math.hypot(this.targetX - this.x, this.targetY - this.y) < 16) {
-          this.explode();
-          this.exploded = true;
-        }
-      }
-
-      explode() {
-        const particleCount = this.isHeartPattern ? 80 : (window.innerWidth < 640 ? 55 : 85);
-
-        if (this.isHeartPattern) {
-          // Parametric Heart Formula
-          for (let i = 0; i < particleCount; i++) {
-            const t = (Math.PI * 2 * i) / particleCount;
-            const hx = 16 * Math.pow(Math.sin(t), 3);
-            const hy = -(13 * Math.cos(t) - 5 * Math.cos(2*t) - 2 * Math.cos(3*t) - Math.cos(4*t));
-            const speedScale = 0.22 + Math.random() * 0.05;
-            const color = this.palette[i % this.palette.length];
-            fireworkParticles.push(new Particle(this.x, this.y, hx * speedScale, hy * speedScale, color, true));
-          }
-        } else {
-          // Spherical Floral Bloom
-          for (let i = 0; i < particleCount; i++) {
-            const angle = Math.random() * Math.PI * 2;
-            const speed = 1.5 + Math.random() * 5.2;
-            const vx = Math.cos(angle) * speed;
-            const vy = Math.sin(angle) * speed;
-            const color = this.palette[Math.floor(Math.random() * this.palette.length)];
-            fireworkParticles.push(new Particle(this.x, this.y, vx, vy, color));
-          }
-        }
-      }
-
-      draw() {
-        for (let i = 0; i < this.trail.length; i++) {
-          const pt = this.trail[i];
-          ctx.save();
-          ctx.globalAlpha = (i / this.trail.length) * 0.7;
-          ctx.fillStyle = '#ff7192';
-          ctx.beginPath();
-          ctx.arc(pt.x, pt.y, 2, 0, Math.PI * 2);
-          ctx.fill();
-          ctx.restore();
-        }
-
-        ctx.save();
-        ctx.fillStyle = '#ffffff';
-        ctx.shadowBlur = 10;
-        ctx.shadowColor = '#fb7192';
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, 3, 0, Math.PI * 2);
-        ctx.fill();
-        ctx.restore();
-      }
-    }
 
     // --- Sakura Petal Class ---
     class SakuraPetal {
@@ -573,77 +436,23 @@
       }
     }
 
-    // Initialize 24 sakura petals
+    // Initialize 24 lightweight sakura petals
     for (let i = 0; i < 24; i++) {
       const p = new SakuraPetal();
       p.y = Math.random() * height;
       sakuraPetals.push(p);
     }
 
-    // Launch Firework Helper
-    function launchFirework(targetX, targetY, isHeart = false) {
-      if (!fireworksActive) return;
-      const startX = targetX + (Math.random() - 0.5) * 60;
-      const startY = height + 10;
-      fireworksRockets.push(new Rocket(startX, startY, targetX, targetY, isHeart));
-    }
-
-    // Main Canvas Render Loop
-    function renderFxLoop() {
+    // Main Canvas Render Loop (Lightweight and buttery smooth)
+    function renderPetalsLoop() {
       ctx.clearRect(0, 0, width, height);
-
-      // 1. Draw Petals (Always active)
       for (let i = 0; i < sakuraPetals.length; i++) {
         sakuraPetals[i].update();
         sakuraPetals[i].draw();
       }
-
-      // 2. Update & Draw Fireworks (Only when active)
-      for (let i = fireworksRockets.length - 1; i >= 0; i--) {
-        const rocket = fireworksRockets[i];
-        rocket.update();
-        rocket.draw();
-        if (rocket.exploded) {
-          fireworksRockets.splice(i, 1);
-        }
-      }
-
-      // 3. Update & Draw Firework Particles
-      for (let i = fireworkParticles.length - 1; i >= 0; i--) {
-        const p = fireworkParticles[i];
-        p.update();
-        p.draw();
-        if (p.alpha <= 0) {
-          fireworkParticles.splice(i, 1);
-        }
-      }
-
-      requestAnimationFrame(renderFxLoop);
+      requestAnimationFrame(renderPetalsLoop);
     }
-    requestAnimationFrame(renderFxLoop);
-
-    // Interactive fireworks on screen click (ACTIVE ONLY AFTER OPENING)
-    window.addEventListener('pointerdown', (e) => {
-      if (!fireworksActive) return;
-      if (e.target.closest('button') || e.target.closest('a')) {
-        return;
-      }
-      const isHeart = Math.random() > 0.4;
-      launchFirework(e.clientX, e.clientY, isHeart);
-    });
-
-    // Ambient automatic fireworks periodically in sky (Active only after opening)
-    let ambientInterval = null;
-    function startAmbientFireworks() {
-      if (ambientInterval) return;
-      ambientInterval = setInterval(() => {
-        if (!fireworksActive || document.hidden) return;
-        const targetX = width * (0.2 + Math.random() * 0.6);
-        const targetY = height * (0.15 + Math.random() * 0.35);
-        const isHeart = Math.random() > 0.45;
-        launchFirework(targetX, targetY, isHeart);
-      }, 3800);
-    }
+    requestAnimationFrame(renderPetalsLoop);
 
     // ==============================================
     // 2. BACKGROUND MUSIC ENGINE (KASIH PUTIH)
@@ -693,18 +502,10 @@
     const letterCard = document.getElementById('letter-card');
 
     function openEnvelope() {
-      // 1. Activate Fireworks Engine
-      fireworksActive = true;
-      startAmbientFireworks();
-
-      // 2. Play "Kasih Putih" music smoothly
+      // 1. Play "Kasih Putih" music smoothly
       playAudio();
 
       envelopeBox.classList.add('opened');
-      
-      // Fire heart firework from envelope location!
-      const rect = envelopeBox.getBoundingClientRect();
-      launchFirework(rect.left + rect.width / 2, rect.top + rect.height * 0.35, true);
 
       // Sweet burst of heart particles
       confetti({
@@ -725,12 +526,6 @@
           requestAnimationFrame(() => {
             letterStage.classList.remove('opacity-0', 'translate-y-8');
             letterStage.classList.add('opacity-100', 'translate-y-0');
-            
-            // Double celebratory fireworks on reveal
-            setTimeout(() => {
-              launchFirework(width * 0.25, height * 0.2, true);
-              launchFirework(width * 0.75, height * 0.2, false);
-            }, 300);
           });
         }, 500);
       }, 700);
@@ -775,33 +570,39 @@
     const stillMadBtn = document.getElementById('still-mad-btn');
     const forgiveModal = document.getElementById('forgive-modal');
     const closeModalBtn = document.getElementById('close-modal-btn');
-    const grandFireworksBtn = document.getElementById('grand-fireworks-btn');
+    const celebrateBtn = document.getElementById('celebrate-btn');
     const cuteToast = document.getElementById('cute-toast');
     const toastText = document.getElementById('toast-text');
     const toastIcon = document.getElementById('toast-icon');
 
-    // Grand celebration fireworks show
-    function triggerGrandFireworks() {
-      let count = 0;
-      const interval = setInterval(() => {
-        const x = width * (0.15 + Math.random() * 0.7);
-        const y = height * (0.12 + Math.random() * 0.35);
-        launchFirework(x, y, Math.random() > 0.3);
-        count++;
-        if (count >= 15) clearInterval(interval);
-      }, 220);
-
-      // Also trigger confetti bursts
+    // Sweet celebration confetti
+    function triggerSweetCelebration() {
       confetti({
-        particleCount: 110,
+        particleCount: 120,
         spread: 100,
         origin: { y: 0.6 },
         colors: ['#fda4b8', '#fb7192', '#ffffff', '#ffd166', '#a855f7']
       });
+      setTimeout(() => {
+        confetti({
+          particleCount: 80,
+          angle: 60,
+          spread: 75,
+          origin: { x: 0 },
+          colors: ['#fda4b8', '#fb7192', '#ffffff']
+        });
+        confetti({
+          particleCount: 80,
+          angle: 120,
+          spread: 75,
+          origin: { x: 1 },
+          colors: ['#fda4b8', '#fb7192', '#ffffff']
+        });
+      }, 250);
     }
 
     forgiveBtn.addEventListener('click', () => {
-      triggerGrandFireworks();
+      triggerSweetCelebration();
       setTimeout(() => {
         forgiveModal.classList.remove('opacity-0', 'pointer-events-none');
         forgiveModal.querySelector('div').classList.remove('scale-90');
@@ -816,9 +617,9 @@
       showToast('Wrapped in a warm, tender hug forever... 🤍', '🥰');
     });
 
-    grandFireworksBtn.addEventListener('click', () => {
-      triggerGrandFireworks();
-      showToast('Fireworks of love blooming just for you! 💖', '🎆');
+    celebrateBtn.addEventListener('click', () => {
+      triggerSweetCelebration();
+      showToast('Endless love blossoming just for you! 💖', '🌸');
     });
 
     // Toast helper
