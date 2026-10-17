@@ -321,7 +321,7 @@
               </button>
 
               <!-- "I Forgive You" Hero Button -->
-              <button id="forgive-btn" class="px-7 py-3.5 rounded-2xl font-sans text-sm sm:text-base font-bold text-white bg-gradient-to-r from-flowee-500 via-rose-500 to-flowee-600 hover:from-flowee-600 hover:to-flowee-700 active:scale-95 shadow-lg shadow-pink-500/25 transition-all flex items-center gap-2 group">
+              <button id="forgive-btn" class="px-7 py-3.5 rounded-2xl font-sans text-sm sm:text-base font-bold text-white bg-gradient-to-r from-flowee-500 via-rose-500 to-flowee-600 hover:from-flowee-600 hover:to-rose-700 active:scale-95 shadow-lg shadow-pink-500/25 transition-all flex items-center gap-2 group">
                 <span class="group-hover:scale-105 transition-transform">I Forgive You! 🌸</span>
                 <span class="text-lg animate-bounce">✨</span>
               </button>
@@ -443,7 +443,7 @@
       sakuraPetals.push(p);
     }
 
-    // Main Canvas Render Loop (Lightweight and buttery smooth)
+    // Main Canvas Render Loop
     function renderPetalsLoop() {
       ctx.clearRect(0, 0, width, height);
       for (let i = 0; i < sakuraPetals.length; i++) {
@@ -537,7 +537,7 @@
     });
     envelopeBox.addEventListener('click', openEnvelope);
 
-    // Return to envelope
+    // Return to envelope (and reset buttons for replayability)
     reopenBtn.addEventListener('click', () => {
       letterStage.classList.remove('opacity-100', 'translate-y-0');
       letterStage.classList.add('opacity-0', 'translate-y-8');
@@ -549,6 +549,23 @@
         requestAnimationFrame(() => {
           envelopeBox.classList.remove('opened');
           envelopeStage.classList.remove('opacity-0', 'scale-95');
+
+          // Reset runaway button state so it can be re-played
+          isRunningSequence = false;
+          stillMadBtn.style.display = '';
+          stillMadBtn.style.position = '';
+          stillMadBtn.style.left = '';
+          stillMadBtn.style.top = '';
+          stillMadBtn.style.transform = '';
+          stillMadBtn.style.opacity = '';
+          stillMadBtn.style.pointerEvents = '';
+          stillMadBtn.textContent = 'Still Mad 😤';
+          forgiveBtn.innerHTML = `
+            <span class="group-hover:scale-105 transition-transform">I Forgive You! 🌸</span>
+            <span class="text-lg animate-bounce">✨</span>
+          `;
+          forgiveBtn.style.transform = '';
+          forgiveBtn.classList.remove('ring-4', 'ring-pink-400', 'shadow-2xl', 'shadow-pink-500/50');
         });
       }, 600);
     });
@@ -564,7 +581,7 @@
     }
 
     // ==============================================
-    // 4. FORGIVE MODAL & PLAYFUL RUNAWAY BUTTON
+    // 4. FORGIVE MODAL & CELEBRATION
     // ==============================================
     const forgiveBtn = document.getElementById('forgive-btn');
     const stillMadBtn = document.getElementById('still-mad-btn');
@@ -575,7 +592,6 @@
     const toastText = document.getElementById('toast-text');
     const toastIcon = document.getElementById('toast-icon');
 
-    // Sweet celebration confetti
     function triggerSweetCelebration() {
       confetti({
         particleCount: 120,
@@ -637,63 +653,104 @@
     }
 
     // ==============================================
-    // 5. RUNAWAY BUTTON ("STILL MAD" DODGES)
+    // 5. SCREEN-CIRCLING RUNAWAY & MERGE SHIELD
     // ==============================================
-    const runawayMessages = [
-      { text: "Oops, missed me! 😜", icon: '🏃' },
-      { text: "Can't catch me! 😝", icon: '🙈' },
-      { text: "No being mad allowed! 🥺", icon: '👉👈' },
-      { text: "Catch me if you can 🏃💨", icon: '😝' },
-      { text: "I'll buy your favorite snacks & boba! 🧋🍰", icon: '🍦' },
-      { text: "This button is anger-proof 🛡️", icon: '😜' },
-      { text: "Look, the forgive button is growing! 🌸", icon: '🥰' }
-    ];
-    let runawayCount = 0;
+    let isRunningSequence = false;
 
-    function runawayButton(e) {
+    function startRunawaySequence(e) {
       if (e) {
         e.preventDefault();
         e.stopPropagation();
       }
+      if (isRunningSequence) return;
+      isRunningSequence = true;
 
-      // Convert to fixed so it can run all over the viewport
       stillMadBtn.style.position = 'fixed';
       stillMadBtn.style.zIndex = '9999';
-      stillMadBtn.style.transition = 'all 0.28s cubic-bezier(0.34, 1.56, 0.64, 1)';
+      stillMadBtn.style.transition = 'all 0.45s cubic-bezier(0.34, 1.56, 0.64, 1)';
 
-      const btnWidth = stillMadBtn.offsetWidth || 130;
+      const btnWidth = stillMadBtn.offsetWidth || 135;
       const btnHeight = stillMadBtn.offsetHeight || 44;
-      const padding = 24;
+      const pad = 24;
 
-      // Safe bounds within visible viewport
-      const minX = padding;
-      const maxX = Math.max(minX, window.innerWidth - btnWidth - padding);
-      const minY = padding + 40;
-      const maxY = Math.max(minY, window.innerHeight - btnHeight - padding);
+      const w = window.innerWidth;
+      const h = window.innerHeight;
 
-      const randomX = Math.floor(minX + Math.random() * (maxX - minX));
-      const randomY = Math.floor(minY + Math.random() * (maxY - minY));
+      // Waypoints that circle around the screen in a full lap!
+      const waypoints = [
+        { x: w - btnWidth - pad, y: pad + 40, text: "Whoosh! Can't catch me! 🏃💨", icon: "💨" },
+        { x: w - btnWidth - pad, y: h - btnHeight - pad, text: "Zooming around! 😝", icon: "🏃" },
+        { x: pad, y: h - btnHeight - pad, text: "Still too fast! 😜", icon: "⚡" },
+        { x: pad, y: pad + 50, text: "Getting dizzy now... 💫", icon: "💫" },
+        { x: Math.max(pad, (w - btnWidth) / 2), y: Math.max(pad, (h - btnHeight) / 2), text: "I surrender to your love! 🏳️🤍", icon: "🏳️" }
+      ];
 
-      stillMadBtn.style.left = `${randomX}px`;
-      stillMadBtn.style.top = `${randomY}px`;
+      let step = 0;
 
-      // Pick next funny text
-      const current = runawayMessages[runawayCount % runawayMessages.length];
-      runawayCount++;
-      stillMadBtn.textContent = current.text;
-      showToast(current.text, current.icon);
+      function nextWaypoint() {
+        if (step < waypoints.length) {
+          const pt = waypoints[step];
+          stillMadBtn.style.left = `${pt.x}px`;
+          stillMadBtn.style.top = `${pt.y}px`;
+          stillMadBtn.textContent = pt.text;
+          showToast(pt.text, pt.icon);
+          
+          // Make forgive button pulse and grow slightly with each dash
+          forgiveBtn.style.transform = `scale(${1 + (step + 1) * 0.04})`;
 
-      // Make the "I Forgive You" button grow larger & more inviting each time!
-      const currentScale = 1 + Math.min(runawayCount * 0.08, 0.45);
-      forgiveBtn.style.transform = `scale(${currentScale})`;
-      forgiveBtn.classList.add('ring-4', 'ring-pink-300', 'shadow-2xl');
+          step++;
+          setTimeout(nextWaypoint, 480);
+        } else {
+          // Final Merge: Dive directly into the "I Forgive You!" button!
+          const forgiveRect = forgiveBtn.getBoundingClientRect();
+          const targetX = forgiveRect.left + (forgiveRect.width - btnWidth) / 2;
+          const targetY = forgiveRect.top + (forgiveRect.height - btnHeight) / 2;
+
+          stillMadBtn.style.transition = 'all 0.65s cubic-bezier(0.4, 0, 0.2, 1)';
+          stillMadBtn.style.left = `${targetX}px`;
+          stillMadBtn.style.top = `${targetY}px`;
+          stillMadBtn.style.transform = 'scale(0.1) rotate(360deg)';
+          stillMadBtn.style.opacity = '0';
+          stillMadBtn.style.pointerEvents = 'none';
+
+          setTimeout(() => {
+            stillMadBtn.style.display = 'none';
+
+            // Forgive button absorbs the anger & activates love protection!
+            forgiveBtn.style.transform = 'scale(1.12)';
+            forgiveBtn.classList.add('ring-4', 'ring-pink-400', 'shadow-2xl', 'shadow-pink-500/50');
+            forgiveBtn.innerHTML = `
+              <span class="flex items-center gap-2">
+                <span>I Forgive You! 🌸</span>
+                <span class="text-xs px-2.5 py-1 rounded-full bg-white/25 border border-white/40 shadow-sm font-semibold tracking-wide">
+                  🛡️ Protected by Love 🤍
+                </span>
+              </span>
+            `;
+
+            // Confetti burst on merge
+            confetti({
+              particleCount: 55,
+              spread: 75,
+              origin: {
+                x: (forgiveRect.left + forgiveRect.width / 2) / window.innerWidth,
+                y: (forgiveRect.top + forgiveRect.height / 2) / window.innerHeight
+              },
+              colors: ['#fb7192', '#fda4b8', '#ffffff', '#ffd166']
+            });
+
+            showToast("All the anger melted away and was protected by love! 🤍🌸", "🛡️");
+          }, 650);
+        }
+      }
+
+      nextWaypoint();
     }
 
-    // Trigger runaway on hover (desktop), touchstart (mobile), pointerover, or click
-    stillMadBtn.addEventListener('mouseenter', runawayButton);
-    stillMadBtn.addEventListener('pointerdown', runawayButton);
-    stillMadBtn.addEventListener('touchstart', runawayButton, { passive: false });
-    stillMadBtn.addEventListener('click', runawayButton);
+    // Trigger runaway lap when clicked or tapped
+    stillMadBtn.addEventListener('click', startRunawaySequence);
+    stillMadBtn.addEventListener('touchstart', startRunawaySequence, { passive: false });
+    stillMadBtn.addEventListener('pointerdown', startRunawaySequence);
   </script>
 </body>
 </html>
