@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>A Letter for Flowee 🌸</title>
+  <title>Untuk Flowee Sayang 🌸 - Maafin Aku Ya</title>
   
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -11,9 +11,9 @@
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   
-  <!-- Canvas Confetti for the Celebration -->
+  <!-- Canvas Confetti -->
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 
   <script>
@@ -34,11 +34,10 @@
               400: '#fb7192',
               500: '#f43f6e',
               600: '#e11d53',
+              700: '#be123c',
               800: '#9f123a',
-            },
-            parchment: '#fefbf6',
-            champagne: '#fbf4ea',
-            lavenderMist: '#f4effa'
+              900: '#881337',
+            }
           }
         }
       }
@@ -46,43 +45,46 @@
   </script>
 
   <style>
-    /* Atmospheric romantic aurora background */
+    /* Romantic night-sky aura background */
     body {
-      background-color: #faf4f5;
+      background-color: #0f0a14;
       background-image: 
-        radial-gradient(at 10% 15%, rgba(254, 205, 215, 0.55) 0px, transparent 55%),
-        radial-gradient(at 85% 10%, rgba(244, 239, 250, 0.75) 0px, transparent 50%),
-        radial-gradient(at 80% 85%, rgba(251, 244, 234, 0.8) 0px, transparent 60%),
-        radial-gradient(at 20% 90%, rgba(254, 226, 232, 0.7) 0px, transparent 55%);
+        radial-gradient(at 15% 15%, rgba(244, 63, 110, 0.22) 0px, transparent 55%),
+        radial-gradient(at 85% 20%, rgba(168, 85, 247, 0.25) 0px, transparent 50%),
+        radial-gradient(at 75% 85%, rgba(236, 72, 153, 0.18) 0px, transparent 60%),
+        radial-gradient(at 20% 80%, rgba(99, 102, 241, 0.2) 0px, transparent 55%);
       min-height: 100vh;
       overflow-x: hidden;
+      color: #fce7f3;
+      user-select: none;
     }
 
-    /* Ambient Canvas */
-    #petals-canvas {
+    /* Ambient Fireworks & Petals Canvas */
+    #fx-canvas {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
       pointer-events: none;
-      z-index: 1;
+      z-index: 2;
     }
 
-    /* Glassmorphism card effects */
+    /* Glassmorphism Romantic Card */
     .glass-card {
-      background: rgba(255, 255, 255, 0.88);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border: 1px solid rgba(255, 255, 255, 0.95);
-      box-shadow: 0 25px 60px -15px rgba(225, 29, 83, 0.12),
-                  0 0 1px 1px rgba(255, 255, 255, 0.8) inset;
+      background: rgba(26, 16, 34, 0.72);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border: 1px solid rgba(254, 205, 215, 0.22);
+      box-shadow: 0 30px 70px -15px rgba(244, 63, 110, 0.25),
+                  0 0 1px 1px rgba(255, 255, 255, 0.15) inset;
     }
 
     .letter-paper {
-      background: linear-gradient(180deg, #fffcf8 0%, #fff9f6 100%);
-      background-image: radial-gradient(rgba(244, 63, 110, 0.04) 1px, transparent 0);
+      background: linear-gradient(180deg, rgba(255, 250, 252, 0.96) 0%, rgba(254, 242, 246, 0.94) 100%);
+      background-image: radial-gradient(rgba(244, 63, 110, 0.06) 1px, transparent 0);
       background-size: 20px 20px;
+      color: #37202c;
     }
 
     /* 3D Envelope Perspective & Flap */
@@ -92,15 +94,15 @@
 
     .envelope-box {
       position: relative;
-      background: linear-gradient(145deg, #fcecee, #f8dce2);
-      border: 1.5px solid rgba(255, 255, 255, 0.8);
-      box-shadow: 0 20px 40px -10px rgba(186, 68, 98, 0.2), 0 0 0 1px rgba(244, 63, 110, 0.08);
+      background: linear-gradient(145deg, #321b2d, #251222);
+      border: 1.5px solid rgba(251, 113, 146, 0.35);
+      box-shadow: 0 25px 60px -10px rgba(225, 29, 83, 0.35), 0 0 0 1px rgba(244, 63, 110, 0.2);
       transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.5s ease;
     }
 
     .envelope-box:hover {
-      transform: translateY(-6px) scale(1.015);
-      box-shadow: 0 28px 50px -10px rgba(186, 68, 98, 0.28);
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 35px 70px -10px rgba(244, 63, 110, 0.45);
     }
 
     .envelope-flap {
@@ -109,12 +111,12 @@
       left: 0;
       right: 0;
       height: 52%;
-      background: linear-gradient(180deg, #f8d3dc 0%, #f5c4cf 100%);
+      background: linear-gradient(180deg, #46223b 0%, #35192c 100%);
       clip-path: polygon(0 0, 100% 0, 50% 100%);
       transform-origin: top center;
       transition: transform 0.85s cubic-bezier(0.4, 0, 0.2, 1), z-index 0.4s ease;
       z-index: 10;
-      border-top: 1px solid rgba(255, 255, 255, 0.9);
+      border-top: 1px solid rgba(255, 255, 255, 0.2);
     }
 
     .envelope-box.opened .envelope-flap {
@@ -128,11 +130,11 @@
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      width: 72px;
-      height: 72px;
-      background: radial-gradient(circle at 35% 35%, #f45c82, #c71e48 70%, #990f32 100%);
+      width: 76px;
+      height: 76px;
+      background: radial-gradient(circle at 35% 35%, #fb7192, #e11d53 65%, #881337 100%);
       border-radius: 50%;
-      box-shadow: 0 8px 24px rgba(175, 21, 62, 0.4), inset 0 2px 4px rgba(255, 255, 255, 0.4), inset 0 -3px 6px rgba(0, 0, 0, 0.25);
+      box-shadow: 0 10px 30px rgba(244, 63, 110, 0.6), inset 0 2px 4px rgba(255, 255, 255, 0.5), inset 0 -3px 6px rgba(0, 0, 0, 0.4);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -142,58 +144,165 @@
     }
 
     .wax-seal:hover {
-      transform: translate(-50%, -50%) scale(1.1) rotate(5deg);
-      box-shadow: 0 12px 28px rgba(175, 21, 62, 0.5), inset 0 2px 5px rgba(255, 255, 255, 0.6);
+      transform: translate(-50%, -50%) scale(1.15) rotate(6deg);
+      box-shadow: 0 15px 35px rgba(244, 63, 110, 0.75), inset 0 2px 5px rgba(255, 255, 255, 0.8);
     }
 
     /* Soft pulsate effect */
     @keyframes pulseGlow {
-      0%, 100% { box-shadow: 0 0 0 0 rgba(244, 63, 110, 0.4); }
-      50% { box-shadow: 0 0 0 14px rgba(244, 63, 110, 0); }
+      0%, 100% { box-shadow: 0 0 0 0 rgba(244, 63, 110, 0.5); }
+      50% { box-shadow: 0 0 0 16px rgba(244, 63, 110, 0); }
     }
 
     .pulse-seal {
-      animation: pulseGlow 2.5s infinite;
+      animation: pulseGlow 2.2s infinite;
+    }
+
+    /* Music equalizer visualizer bar animation */
+    @keyframes soundBar {
+      0%, 100% { height: 4px; }
+      50% { height: 16px; }
+    }
+    .sound-bar {
+      width: 3px;
+      background: #fb7192;
+      border-radius: 99px;
+      animation: soundBar 1.2s ease-in-out infinite;
+    }
+    .sound-bar:nth-child(2) { animation-delay: 0.2s; animation-duration: 0.9s; }
+    .sound-bar:nth-child(3) { animation-delay: 0.4s; animation-duration: 1.4s; }
+    .sound-bar:nth-child(4) { animation-delay: 0.1s; animation-duration: 1.1s; }
+    .paused .sound-bar {
+      animation-play-state: paused;
+      height: 4px !important;
+    }
+
+    /* Floating music disc */
+    @keyframes spinDisc {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+    .spin-disc {
+      animation: spinDisc 6s linear infinite;
+    }
+    .paused .spin-disc {
+      animation-play-state: paused;
+    }
+
+    /* Floating spark trail */
+    .sparkle-badge {
+      animation: floatBadge 3s ease-in-out infinite alternate;
+    }
+    @keyframes floatBadge {
+      0% { transform: translateY(0px) rotate(0deg); }
+      100% { transform: translateY(-5px) rotate(1deg); }
+    }
+
+    /* Clickable sky cursor hint */
+    .sky-hint {
+      animation: fadeInOut 4s ease-in-out infinite;
+    }
+    @keyframes fadeInOut {
+      0%, 100% { opacity: 0.4; transform: translateY(0); }
+      50% { opacity: 0.85; transform: translateY(-3px); }
     }
   </style>
 </head>
-<body class="relative flex items-center justify-center min-h-screen p-4 sm:p-6 text-neutral-800 antialiased selection:bg-pink-200">
+<body class="relative flex flex-col items-center justify-center min-h-screen p-4 sm:p-6 antialiased selection:bg-pink-500 selection:text-white">
 
-  <!-- Ambient Blossom Petals Canvas -->
-  <canvas id="petals-canvas"></canvas>
+  <!-- Ambient Fireworks & Petals Canvas -->
+  <canvas id="fx-canvas"></canvas>
 
-  <main class="relative z-10 w-full max-w-2xl my-auto">
+  <!-- ============================================== -->
+  <!-- FLOATING MUSIC PLAYER (Kasih Putih)            -->
+  <!-- ============================================== -->
+  <header class="fixed top-4 sm:top-6 z-40 max-w-xl w-[92%] sm:w-auto">
+    <div id="music-pill" class="flex items-center gap-3 px-4 py-2.5 rounded-full bg-neutral-900/80 backdrop-blur-xl border border-pink-500/30 shadow-xl shadow-pink-950/40 text-neutral-200 transition-all hover:border-pink-500/60 cursor-pointer">
+      <!-- Vinyl Disc Icon -->
+      <div class="relative w-9 h-9 rounded-full bg-gradient-to-tr from-neutral-950 to-pink-950 border border-pink-400/40 flex items-center justify-center shadow-inner overflow-hidden flex-shrink-0">
+        <div id="vinyl-disc" class="w-full h-full flex items-center justify-center spin-disc paused">
+          <div class="w-4 h-4 rounded-full bg-gradient-to-tr from-pink-500 to-rose-400 flex items-center justify-center shadow">
+            <div class="w-1.5 h-1.5 rounded-full bg-neutral-950"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Song Details & Sound Waves -->
+      <div class="flex flex-col min-w-0 pr-1">
+        <div class="flex items-center gap-2">
+          <span class="font-sans text-xs font-semibold text-pink-200 tracking-wide truncate">Kasih Putih</span>
+          <span class="text-[10px] px-1.5 py-0.2 rounded bg-pink-500/20 text-pink-300 font-medium">Glenn Fredly</span>
+        </div>
+        <span id="music-status-txt" class="text-[11px] text-neutral-400 truncate font-sans">
+          Sentuh untuk memutar lagu 🎵
+        </span>
+      </div>
+
+      <!-- Equalizer Visualizer Bars -->
+      <div id="sound-equalizer" class="flex items-end gap-0.5 h-4 px-1 paused flex-shrink-0">
+        <span class="sound-bar"></span>
+        <span class="sound-bar"></span>
+        <span class="sound-bar"></span>
+        <span class="sound-bar"></span>
+      </div>
+
+      <!-- Play / Pause Icon Button -->
+      <button id="play-toggle-btn" class="w-8 h-8 rounded-full bg-pink-500/20 hover:bg-pink-500/40 text-pink-300 flex items-center justify-center transition-all flex-shrink-0 active:scale-95" aria-label="Toggle Playback">
+        <svg id="play-icon" class="w-4 h-4 ml-0.5" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M8 5v14l11-7z"/>
+        </svg>
+        <svg id="pause-icon" class="w-4 h-4 hidden" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
+        </svg>
+      </button>
+    </div>
+  </header>
+
+  <!-- Audio Element (Primary local with remote fallback) -->
+  <audio id="bg-audio" loop preload="auto">
+    <source src="kasih-putih.mp3" type="audio/mpeg">
+    <source src="https://archive.org/download/juicy-luicy-terlalu-tinggi-official-music-video/GLENN%20FREDLY%20-%20Kasih%20Putih.mp3" type="audio/mpeg">
+  </audio>
+
+  <!-- Sky Fireworks Interaction Hint -->
+  <div class="fixed top-18 sm:top-20 z-30 sky-hint pointer-events-none text-center">
+    <span class="text-[11px] font-sans tracking-widest text-pink-300/80 uppercase px-3 py-1 rounded-full bg-pink-950/40 border border-pink-500/20">
+      ✨ Sentuh / klik layar mana saja untuk nyalain kembang api ✨
+    </span>
+  </div>
+
+  <main class="relative z-10 w-full max-w-2xl my-auto pt-24 pb-12">
 
     <!-- ============================================== -->
-    <!-- STAGE 1: ENVELOPE (Click to Unfold)            -->
+    <!-- STAGE 1: ENVELOPE (Tap to open)                -->
     <!-- ============================================== -->
     <div id="envelope-stage" class="envelope-perspective w-full max-w-md mx-auto transition-all duration-700 ease-in-out">
       <div class="text-center mb-6">
-        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium tracking-widest uppercase bg-white/80 border border-pink-200/80 text-flowee-600 shadow-sm">
-          <span>🌸</span> Handcrafted for Flowee
+        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium tracking-widest uppercase bg-pink-950/60 border border-pink-500/30 text-pink-300 shadow-lg">
+          <span>🌸</span> Khusus Untuk Flowee Sayang
         </span>
-        <h2 class="font-serif text-3xl sm:text-4xl text-neutral-800 mt-2 italic font-normal">You Have a Letter</h2>
-        <p class="font-sans text-xs text-neutral-500 mt-1">Tap the wax seal to open my heart to you</p>
+        <h2 class="font-serif text-3xl sm:text-4xl text-pink-100 mt-2 italic font-normal">Ada Surat Permintaan Maaf</h2>
+        <p class="font-sans text-xs text-pink-300/80 mt-1">Tekan segel lilin hati untuk membuka isi hatiku</p>
       </div>
 
-      <!-- Envelope Container -->
-      <div id="envelope-box" class="envelope-box w-full aspect-[4/3] rounded-2xl relative overflow-hidden flex items-center justify-center cursor-pointer shadow-xl">
+      <!-- Envelope Box -->
+      <div id="envelope-box" class="envelope-box w-full aspect-[4/3] rounded-3xl relative overflow-hidden flex items-center justify-center cursor-pointer shadow-2xl">
         <!-- Flap -->
         <div id="envelope-flap" class="envelope-flap"></div>
         
-        <!-- Subtle Envelope Liner Shadows / Pattern -->
-        <div class="absolute inset-0 bg-gradient-to-t from-pink-100/60 via-transparent to-transparent pointer-events-none"></div>
+        <!-- Subtle Inner Glow -->
+        <div class="absolute inset-0 bg-gradient-to-t from-pink-900/30 via-transparent to-transparent pointer-events-none"></div>
         
         <!-- Letter peek inside -->
-        <div class="w-[84%] h-[75%] rounded-t-xl bg-white/95 border border-pink-100 shadow-inner flex flex-col items-center justify-center p-6 text-center transform translate-y-3">
-          <div class="w-10 h-0.5 bg-pink-200 mb-3 rounded-full"></div>
-          <span class="font-script text-3xl sm:text-4xl text-flowee-600">Dearest Flowee</span>
-          <p class="font-serif text-xs italic text-neutral-400 mt-1 tracking-wider">A sincere apology from deep within...</p>
+        <div class="w-[84%] h-[75%] rounded-t-2xl bg-gradient-to-b from-[#fffafc] to-[#fcecee] border border-pink-200/90 shadow-2xl flex flex-col items-center justify-center p-6 text-center transform translate-y-3">
+          <div class="w-12 h-1 bg-pink-300/70 mb-3 rounded-full"></div>
+          <span class="font-script text-3xl sm:text-4xl text-flowee-600">Teruntuk Flowee Cintaku</span>
+          <p class="font-serif text-xs italic text-neutral-500 mt-1 tracking-wider">Permintaan maaf yang tulus dari lubuk hatiku...</p>
         </div>
 
         <!-- Wax Seal Button -->
-        <button id="wax-seal" class="wax-seal pulse-seal group" aria-label="Open letter">
-          <svg class="w-8 h-8 text-white/90 transform transition-transform group-hover:scale-110 drop-shadow" viewBox="0 0 24 24" fill="currentColor">
+        <button id="wax-seal" class="wax-seal pulse-seal group" aria-label="Buka Surat">
+          <svg class="w-9 h-9 text-white transform transition-transform group-hover:scale-110 drop-shadow-md" viewBox="0 0 24 24" fill="currentColor">
             <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
           </svg>
         </button>
@@ -204,128 +313,141 @@
     <!-- STAGE 2: THE REVEALED APOLOGY CARD             -->
     <!-- ============================================== -->
     <div id="letter-stage" class="hidden opacity-0 translate-y-8 transition-all duration-1000 ease-out">
-      <div class="glass-card letter-paper rounded-3xl p-6 sm:p-10 md:p-12 relative overflow-hidden border border-rose-100/80 shadow-2xl">
+      <div id="letter-card" class="letter-paper rounded-3xl p-6 sm:p-10 md:p-12 relative overflow-hidden border border-pink-300/80 shadow-[0_25px_80px_rgba(244,63,110,0.35)] transition-transform duration-300">
         
-        <!-- Decorative Botanical Accents in Corner -->
-        <div class="absolute top-0 right-0 -mr-6 -mt-6 w-32 h-32 bg-gradient-to-br from-pink-200/40 to-transparent rounded-full blur-2xl pointer-events-none"></div>
-        <div class="absolute bottom-0 left-0 -ml-6 -mb-6 w-36 h-36 bg-gradient-to-tr from-purple-200/40 to-transparent rounded-full blur-2xl pointer-events-none"></div>
+        <!-- Decorative Ambient Accents -->
+        <div class="absolute top-0 right-0 -mr-10 -mt-10 w-44 h-44 bg-gradient-to-br from-pink-300/35 to-transparent rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute bottom-0 left-0 -ml-10 -mb-10 w-44 h-44 bg-gradient-to-tr from-purple-300/30 to-transparent rounded-full blur-3xl pointer-events-none"></div>
 
         <!-- Header Tag -->
-        <div class="flex items-center justify-between border-b border-rose-100/80 pb-5">
+        <div class="flex items-center justify-between border-b border-rose-200/80 pb-5">
           <div class="flex items-center gap-2">
-            <span class="inline-block w-2 h-2 rounded-full bg-flowee-500 animate-ping"></span>
-            <span class="font-sans text-xs uppercase tracking-widest font-semibold text-flowee-600">A Solemn Promise</span>
+            <span class="inline-block w-2.5 h-2.5 rounded-full bg-flowee-500 animate-ping"></span>
+            <span class="font-sans text-xs uppercase tracking-widest font-semibold text-flowee-600">Janji Tulus Dari Hati</span>
           </div>
-          <span class="font-script text-2xl text-flowee-500/80">Forgive my heart</span>
+          <span class="font-script text-2xl text-flowee-500">Maafin aku ya sayang 🤍</span>
         </div>
 
         <!-- The Letter Body -->
         <article class="mt-8 space-y-6">
           <div class="space-y-1">
-            <h3 class="font-script text-3xl sm:text-4xl text-flowee-600">My Sweetest Flowee 🌸,</h3>
+            <h3 class="font-script text-3xl sm:text-5xl text-flowee-600 leading-tight">Sayangku Flowee 🌸,</h3>
             <h1 class="font-serif text-3xl sm:text-4xl md:text-5xl text-neutral-800 font-light leading-tight">
-              I am so deeply sorry, my love.
+              Aku minta maaf yang sebesar-besarnya ya...
             </h1>
           </div>
 
           <div class="font-serif text-lg sm:text-xl text-neutral-700 leading-relaxed space-y-4 pt-2">
             <p>
-              I failed to be there when you needed me most, leaving you to carry the heavy weight of sadness alone. It completely breaks my heart knowing that my absence caused you pain during the quiet hours when all you needed was a warm shoulder, an open heart, and someone to hold you tight.
+              Aku bener-bener nyesel dan sedih banget kalau sampai bikin kamu kepikiran, kecewa, atau ngerasa sendirian. Kamu itu orang yang paling berharga buat aku, dan bikin kamu sedih adalah hal terakhir yang pernah aku inginkan di dunia ini.
             </p>
 
-            <blockquote class="my-5 p-5 bg-gradient-to-r from-flowee-50/80 via-white to-flowee-50/40 rounded-2xl border-l-4 border-flowee-400 font-serif italic text-neutral-800 text-lg shadow-sm">
-              "Your heart was aching, and instead of sheltering you from the storm, I was away. There is no excuse for making the person I cherish most feel deserted."
+            <blockquote class="my-5 p-5 bg-gradient-to-r from-flowee-50 via-white to-flowee-50/50 rounded-2xl border-l-4 border-flowee-400 font-serif italic text-neutral-800 text-lg sm:text-xl shadow-sm">
+              "Biarkanlah rasa cintaku mengalir di hatimu... seperti kasih putih yang suci, aku janji bakal selalu ada, jagain kamu, dan gak akan bikin kamu sedih lagi."
             </blockquote>
 
             <p>
-              Please know that your tears are never a burden, and your feelings are precious to me. I don’t take your presence in my life for granted, not for a single breath. I promise to listen with all my soul, to stay patiently by your side, and to never let you feel alone in this world again.
+              Setiap senyuman kamu itu obat buat aku, dan setiap air mata kamu adalah luka terdalam buat aku. Makasih udah selalu sabar menghadapi aku. Aku mau terus belajar jadi pasangan yang jauh lebih baik, lebih peka, dan selalu ada buat nemenin setiap langkah kamu.
             </p>
 
-            <p class="font-normal text-flowee-800">
-              Will you grant me the chance to make it right and bring the warm smile back to your face?
+            <p class="font-normal text-flowee-800 text-xl font-serif">
+              Mau kan maafin aku dan kita senyum bahagia bareng lagi? 🥺👉👈
             </p>
           </div>
 
           <!-- Little Vow Cards -->
-          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-4 font-sans text-xs">
-            <div class="p-3.5 rounded-2xl bg-white/70 border border-pink-100/80 shadow-sm flex flex-col items-center text-center">
-              <span class="text-xl mb-1">👂</span>
-              <strong class="text-neutral-800 font-semibold mb-0.5">Always Listening</strong>
-              <span class="text-neutral-500">Every word and every silence will be heard.</span>
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3.5 pt-4 font-sans text-xs">
+            <div class="p-4 rounded-2xl bg-white/90 border border-pink-100 shadow-sm flex flex-col items-center text-center transition-all hover:scale-105 hover:shadow-md">
+              <span class="text-2xl mb-1.5">👂</span>
+              <strong class="text-neutral-800 font-semibold mb-0.5">Selalu Mendengarkan</strong>
+              <span class="text-neutral-500">Keluh kesah dan ceritamu selalu jadi prioritasku.</span>
             </div>
-            <div class="p-3.5 rounded-2xl bg-white/70 border border-pink-100/80 shadow-sm flex flex-col items-center text-center">
-              <span class="text-xl mb-1">🫂</span>
-              <strong class="text-neutral-800 font-semibold mb-0.5">Never Alone</strong>
-              <span class="text-neutral-500">Ready to rush to your side whenever you need me.</span>
+            <div class="p-4 rounded-2xl bg-white/90 border border-pink-100 shadow-sm flex flex-col items-center text-center transition-all hover:scale-105 hover:shadow-md">
+              <span class="text-2xl mb-1.5">🫂</span>
+              <strong class="text-neutral-800 font-semibold mb-0.5">Gak Akan Sendirian</strong>
+              <span class="text-neutral-500">Kapanpun kamu butuh, pelukanku selalu siap buatmu.</span>
             </div>
-            <div class="p-3.5 rounded-2xl bg-white/70 border border-pink-100/80 shadow-sm flex flex-col items-center text-center">
-              <span class="text-xl mb-1">🌸</span>
-              <strong class="text-neutral-800 font-semibold mb-0.5">Endless Care</strong>
-              <span class="text-neutral-500">To cherish and protect your fragile heart always.</span>
+            <div class="p-4 rounded-2xl bg-white/90 border border-pink-100 shadow-sm flex flex-col items-center text-center transition-all hover:scale-105 hover:shadow-md">
+              <span class="text-2xl mb-1.5">🤍</span>
+              <strong class="text-neutral-800 font-semibold mb-0.5">Kasih Tulus Selamanya</strong>
+              <span class="text-neutral-500">Menjaga hatimu dengan sepenuh cinta dan kesetiaan.</span>
             </div>
           </div>
 
-          <!-- Sign off -->
-          <div class="pt-6 flex flex-col sm:flex-row sm:items-end justify-between border-t border-rose-100/80 gap-4">
+          <!-- Sign off & Action Buttons -->
+          <div class="pt-6 flex flex-col sm:flex-row sm:items-end justify-between border-t border-rose-200/80 gap-5">
             <div>
-              <p class="font-serif italic text-sm text-neutral-500">Forever yours, with all my remorse,</p>
-              <p class="font-script text-3xl sm:text-4xl text-neutral-800 mt-1">Yours Truly</p>
+              <p class="font-serif italic text-sm text-neutral-500">Yang selalu sayang sama kamu,</p>
+              <p class="font-script text-3xl sm:text-4xl text-flowee-700 mt-1">Pacarmu yang paling sayang kamu ❤️</p>
             </div>
 
-            <!-- Interactive Reaction Buttons -->
-            <div class="flex items-center gap-3">
-              <button id="hug-btn" class="px-5 py-3 rounded-2xl font-sans text-sm font-medium text-flowee-700 bg-rose-100/80 hover:bg-rose-200/90 active:scale-95 transition-all">
-                Send a Hug 🤍
+            <!-- Interactive Decision Buttons -->
+            <div class="flex items-center gap-3 relative" id="decision-buttons">
+              <!-- Playful "Masih Kesel" Button -->
+              <button id="still-mad-btn" class="px-4 py-3 rounded-2xl font-sans text-xs sm:text-sm font-medium text-rose-700 bg-rose-100/90 hover:bg-rose-200 active:scale-95 transition-all">
+                Masih kesel 😤
               </button>
-              <button id="forgive-btn" class="px-6 py-3 rounded-2xl font-sans text-sm font-semibold text-white bg-gradient-to-r from-flowee-500 to-flowee-600 hover:from-flowee-600 hover:to-flowee-700 active:scale-95 shadow-md shadow-pink-500/25 transition-all flex items-center gap-2">
-                <span>I Forgive You</span>
-                <span class="text-base">🌸</span>
+
+              <!-- "I Forgive You" Hero Button -->
+              <button id="forgive-btn" class="px-7 py-3.5 rounded-2xl font-sans text-sm sm:text-base font-bold text-white bg-gradient-to-r from-flowee-500 via-rose-500 to-flowee-600 hover:from-flowee-600 hover:to-flowee-700 active:scale-95 shadow-lg shadow-pink-500/30 transition-all flex items-center gap-2 group">
+                <span class="group-hover:scale-105 transition-transform">Ya, Dimaafin! 🌸</span>
+                <span class="text-lg animate-bounce">✨</span>
               </button>
             </div>
           </div>
         </article>
       </div>
 
-      <!-- Quick back button to re-wrap -->
+      <!-- Return button -->
       <div class="text-center mt-6">
-        <button id="reopen-btn" class="text-xs font-sans text-neutral-400 hover:text-flowee-600 transition-colors inline-flex items-center gap-1">
+        <button id="reopen-btn" class="text-xs font-sans text-pink-300/80 hover:text-pink-100 transition-colors inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-pink-950/40 border border-pink-500/20">
           <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h10a8 8 0 018 8v2M3 10l6 6m-6-6l6-6"/></svg>
-          Put letter back in envelope
+          Tutup kembali ke dalam amplop
         </button>
       </div>
     </div>
   </main>
 
   <!-- Sweet Acceptance Modal Overlay -->
-  <div id="forgive-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/40 backdrop-blur-sm opacity-0 pointer-events-none transition-all duration-500">
-    <div class="bg-white/95 rounded-3xl p-6 sm:p-8 max-w-sm w-full text-center shadow-2xl border border-pink-100 transform scale-95 transition-all duration-300">
-      <div class="w-16 h-16 bg-pink-100 rounded-full flex items-center justify-center mx-auto text-3xl mb-4 animate-bounce">
-        🌸
+  <div id="forgive-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-md opacity-0 pointer-events-none transition-all duration-500">
+    <div class="bg-gradient-to-b from-[#fffcfd] to-[#fff0f4] rounded-3xl p-6 sm:p-9 max-w-md w-full text-center shadow-2xl border border-pink-200 transform scale-90 transition-all duration-300 relative overflow-hidden">
+      
+      <!-- Sparkle Corner Effects -->
+      <div class="text-5xl mb-3 animate-bounce">
+        🎆💖🌸
       </div>
-      <h3 class="font-serif text-2xl text-neutral-900 font-semibold mb-2">Thank You, Flowee!</h3>
+      <h3 class="font-serif text-3xl text-neutral-900 font-bold mb-2">Yeeey! Makasih Banyak Flowee Sayang! 🥰</h3>
       <p class="font-sans text-sm text-neutral-600 leading-relaxed mb-6">
-        Your kindness means everything to me. I promise to hold your hand tighter, be your constant peace, and never let you walk through tears alone again.
+        Mendengar kata maaf darimu rasanya seperti kembang api terindah di langit malam. Aku janji bakal terus bikin kamu tersenyum bahagia dan melindungimu setiap hari!
       </p>
-      <button id="close-modal-btn" class="w-full py-3 rounded-xl bg-flowee-500 hover:bg-flowee-600 text-white font-sans text-sm font-medium shadow-md transition-all">
-        Hold onto this promise ✨
-      </button>
+
+      <div class="space-y-3">
+        <button id="grand-fireworks-btn" class="w-full py-3.5 rounded-2xl bg-gradient-to-r from-flowee-500 to-rose-600 hover:from-flowee-600 hover:to-rose-700 text-white font-sans text-sm font-semibold shadow-lg shadow-pink-500/30 transition-all active:scale-95 flex items-center justify-center gap-2">
+          <span>Nyalain Kembang Api Lebih Banyak! 🎆</span>
+        </button>
+        <button id="close-modal-btn" class="w-full py-2.5 rounded-xl text-neutral-500 hover:text-neutral-800 font-sans text-xs font-medium transition-all">
+          Peluk kamu erat-erat 🤍
+        </button>
+      </div>
     </div>
   </div>
 
-  <!-- Hug Toast -->
-  <div id="hug-toast" class="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 px-5 py-2.5 rounded-full bg-neutral-900/90 text-white font-sans text-xs tracking-wide shadow-xl backdrop-blur-md opacity-0 pointer-events-none transition-all duration-300 flex items-center gap-2">
-    <span>🤍</span>
-    <span>A warm, tender hug is wrapped around you right now, Flowee.</span>
+  <!-- Cute Notification Toast -->
+  <div id="cute-toast" class="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 px-5 py-3 rounded-full bg-neutral-900/95 text-pink-100 font-sans text-xs sm:text-sm tracking-wide shadow-2xl border border-pink-500/40 backdrop-blur-md opacity-0 pointer-events-none transition-all duration-300 flex items-center gap-2.5">
+    <span id="toast-icon" class="text-base">🥺</span>
+    <span id="toast-text">Jangan ngambek lagi ya sayang, nanti cantiknya ilang lho...</span>
   </div>
 
+  <!-- ============================================== -->
+  <!-- JAVASCRIPT: FIREWORKS, PETALS & MUSIC ENGINE   -->
+  <!-- ============================================== -->
   <script>
-    // ==========================================
-    // 1. Interactive Falling Petals & Bokeh (Canvas)
-    // ==========================================
-    const canvas = document.getElementById('petals-canvas');
+    // ==============================================
+    // 1. ADVANCED FIREWORKS & SAKURA CANVAS ENGINE
+    // ==============================================
+    const canvas = document.getElementById('fx-canvas');
     const ctx = canvas.getContext('2d');
     let width, height;
-    let petals = [];
 
     function resizeCanvas() {
       width = canvas.width = window.innerWidth;
@@ -334,6 +456,145 @@
     window.addEventListener('resize', resizeCanvas);
     resizeCanvas();
 
+    // Color palettes for romantic fireworks
+    const fireworkPalettes = [
+      ['#ff4d6d', '#ff758f', '#ffb3c1', '#ffffff'], // Romantic Rose & White
+      ['#f72585', '#7209b7', '#3a0ca3', '#4cc9f0'], // Vivid Violet & Cyan
+      ['#ffbe0b', '#fb5607', '#ff006e', '#8338ec'], // Golden Sunset Spark
+      ['#ffd166', '#06d6a0', '#118ab2', '#ef476f'], // Festive Shimmer
+      ['#ffffff', '#fce7f3', '#fbcfe8', '#f472b6'], // Pure Kasih Putih Starlight
+    ];
+
+    let fireworksRockets = [];
+    let fireworkParticles = [];
+    let sakuraPetals = [];
+
+    // --- Particle Class ---
+    class Particle {
+      constructor(x, y, vx, vy, color, isHeart = false) {
+        this.x = x;
+        this.y = y;
+        this.vx = vx;
+        this.vy = vy;
+        this.color = color;
+        this.alpha = 1;
+        this.decay = 0.012 + Math.random() * 0.016;
+        this.gravity = 0.045;
+        this.resistance = 0.96;
+        this.size = 2.2 + Math.random() * 2;
+        this.isHeart = isHeart;
+        this.flicker = Math.random() > 0.5;
+      }
+
+      update() {
+        this.vx *= this.resistance;
+        this.vy *= this.resistance;
+        this.vy += this.gravity;
+        this.x += this.vx;
+        this.y += this.vy;
+        this.alpha -= this.decay;
+      }
+
+      draw() {
+        if (this.alpha <= 0) return;
+        ctx.save();
+        ctx.globalAlpha = Math.max(0, this.alpha * (this.flicker && Math.random() > 0.3 ? 0.7 : 1));
+        ctx.fillStyle = this.color;
+        ctx.shadowBlur = 8;
+        ctx.shadowColor = this.color;
+
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.restore();
+      }
+    }
+
+    // --- Rocket Class ---
+    class Rocket {
+      constructor(startX, startY, targetX, targetY, isHeartPattern = false) {
+        this.x = startX;
+        this.y = startY;
+        this.targetX = targetX;
+        this.targetY = targetY;
+        const angle = Math.atan2(targetY - startY, targetX - startX);
+        const distance = Math.hypot(targetX - startX, targetY - startY);
+        this.speed = Math.min(13, distance / 28);
+        this.vx = Math.cos(angle) * this.speed;
+        this.vy = Math.sin(angle) * this.speed;
+        this.palette = fireworkPalettes[Math.floor(Math.random() * fireworkPalettes.length)];
+        this.isHeartPattern = isHeartPattern;
+        this.exploded = false;
+        this.trail = [];
+      }
+
+      update() {
+        this.trail.push({ x: this.x, y: this.y, alpha: 0.8 });
+        if (this.trail.length > 7) this.trail.shift();
+
+        this.x += this.vx;
+        this.y += this.vy;
+
+        // Check if arrived near target
+        if (this.vy >= 0 || this.y <= this.targetY || Math.hypot(this.targetX - this.x, this.targetY - this.y) < 15) {
+          this.explode();
+          this.exploded = true;
+        }
+      }
+
+      explode() {
+        const particleCount = this.isHeartPattern ? 80 : (window.innerWidth < 640 ? 55 : 85);
+
+        if (this.isHeartPattern) {
+          // Parametric Heart Formula
+          for (let i = 0; i < particleCount; i++) {
+            const t = (Math.PI * 2 * i) / particleCount;
+            // Heart curve equation
+            const hx = 16 * Math.pow(Math.sin(t), 3);
+            const hy = -(13 * Math.cos(t) - 5 * Math.cos(2*t) - 2 * Math.cos(3*t) - Math.cos(4*t));
+            const speedScale = 0.22 + Math.random() * 0.05;
+            const color = this.palette[i % this.palette.length];
+            fireworkParticles.push(new Particle(this.x, this.y, hx * speedScale, hy * speedScale, color, true));
+          }
+        } else {
+          // Spherical Floral Bloom
+          for (let i = 0; i < particleCount; i++) {
+            const angle = Math.random() * Math.PI * 2;
+            const speed = 1.5 + Math.random() * 5.2;
+            const vx = Math.cos(angle) * speed;
+            const vy = Math.sin(angle) * speed;
+            const color = this.palette[Math.floor(Math.random() * this.palette.length)];
+            fireworkParticles.push(new Particle(this.x, this.y, vx, vy, color));
+          }
+        }
+      }
+
+      draw() {
+        // Draw trailing spark line
+        for (let i = 0; i < this.trail.length; i++) {
+          const pt = this.trail[i];
+          ctx.save();
+          ctx.globalAlpha = (i / this.trail.length) * 0.7;
+          ctx.fillStyle = '#ffb3c1';
+          ctx.beginPath();
+          ctx.arc(pt.x, pt.y, 2, 0, Math.PI * 2);
+          ctx.fill();
+          ctx.restore();
+        }
+
+        // Draw rocket head
+        ctx.save();
+        ctx.fillStyle = '#ffffff';
+        ctx.shadowBlur = 10;
+        ctx.shadowColor = '#fb7192';
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, 3, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.restore();
+      }
+    }
+
+    // --- Sakura Petal Class ---
     class SakuraPetal {
       constructor() {
         this.reset();
@@ -342,22 +603,21 @@
       reset() {
         this.x = Math.random() * width;
         this.y = -20 - Math.random() * 40;
-        this.size = 9 + Math.random() * 11;
-        this.speedY = 0.8 + Math.random() * 1.4;
-        this.speedX = Math.sin(Math.random() * 2) * 0.8;
+        this.size = 8 + Math.random() * 10;
+        this.speedY = 0.7 + Math.random() * 1.3;
+        this.speedX = Math.sin(Math.random() * 2) * 0.6;
         this.rotation = Math.random() * 360;
-        this.rotSpeed = (Math.random() - 0.5) * 1.5;
+        this.rotSpeed = (Math.random() - 0.5) * 1.6;
         this.oscillation = Math.random() * Math.PI * 2;
         this.oscSpeed = 0.02 + Math.random() * 0.02;
         this.alpha = 0.35 + Math.random() * 0.45;
-        // Soft gradient shades of pink and rose
         this.color = Math.random() > 0.4 ? '#fbaab5' : '#fda4b8';
       }
 
       update() {
         this.y += this.speedY;
         this.oscillation += this.oscSpeed;
-        this.x += Math.sin(this.oscillation) * 1.2 + this.speedX;
+        this.x += Math.sin(this.oscillation) * 1.1 + this.speedX;
         this.rotation += this.rotSpeed;
 
         if (this.y > height + 20 || this.x < -40 || this.x > width + 40) {
@@ -370,8 +630,6 @@
         ctx.translate(this.x, this.y);
         ctx.rotate((this.rotation * Math.PI) / 180);
         ctx.globalAlpha = this.alpha;
-
-        // Draw petal shape
         ctx.beginPath();
         ctx.moveTo(0, 0);
         ctx.bezierCurveTo(-this.size / 2, -this.size / 2, -this.size / 2, this.size / 2, 0, this.size);
@@ -382,46 +640,170 @@
       }
     }
 
-    // Initialize 36 delicate petals
-    const petalCount = window.innerWidth < 640 ? 22 : 38;
-    for (let i = 0; i < petalCount; i++) {
-      const petal = new SakuraPetal();
-      petal.y = Math.random() * height; // scatter initial state
-      petals.push(petal);
+    // Initialize 24 sakura petals
+    for (let i = 0; i < 24; i++) {
+      const p = new SakuraPetal();
+      p.y = Math.random() * height;
+      sakuraPetals.push(p);
     }
 
-    function animatePetals() {
+    // Launch Firework Helper
+    function launchFirework(targetX, targetY, isHeart = false) {
+      const startX = targetX + (Math.random() - 0.5) * 60;
+      const startY = height + 10;
+      fireworksRockets.push(new Rocket(startX, startY, targetX, targetY, isHeart));
+    }
+
+    // Main Canvas Render Loop
+    function renderFxLoop() {
+      // Clear with slight trailing blend for glowing fireworks
       ctx.clearRect(0, 0, width, height);
-      for (let i = 0; i < petals.length; i++) {
-        petals[i].update();
-        petals[i].draw();
-      }
-      requestAnimationFrame(animatePetals);
-    }
-    requestAnimationFrame(animatePetals);
 
-    // ==========================================
-    // 2. Envelope & Letter Transitions
-    // ==========================================
+      // 1. Draw Petals
+      for (let i = 0; i < sakuraPetals.length; i++) {
+        sakuraPetals[i].update();
+        sakuraPetals[i].draw();
+      }
+
+      // 2. Update & Draw Rockets
+      for (let i = fireworksRockets.length - 1; i >= 0; i--) {
+        const rocket = fireworksRockets[i];
+        rocket.update();
+        rocket.draw();
+        if (rocket.exploded) {
+          fireworksRockets.splice(i, 1);
+        }
+      }
+
+      // 3. Update & Draw Firework Particles
+      for (let i = fireworkParticles.length - 1; i >= 0; i--) {
+        const p = fireworkParticles[i];
+        p.update();
+        p.draw();
+        if (p.alpha <= 0) {
+          fireworkParticles.splice(i, 1);
+        }
+      }
+
+      requestAnimationFrame(renderFxLoop);
+    }
+    requestAnimationFrame(renderFxLoop);
+
+    // Click anywhere to launch interactive firework!
+    window.addEventListener('pointerdown', (e) => {
+      // Don't trigger if clicked on buttons or input
+      if (e.target.closest('button') || e.target.closest('#music-pill') || e.target.closest('a')) {
+        return;
+      }
+      const isHeart = Math.random() > 0.4;
+      launchFirework(e.clientX, e.clientY, isHeart);
+    });
+
+    // Ambient automatic fireworks periodically in sky
+    setInterval(() => {
+      if (document.hidden) return;
+      const targetX = width * (0.2 + Math.random() * 0.6);
+      const targetY = height * (0.15 + Math.random() * 0.35);
+      const isHeart = Math.random() > 0.45;
+      launchFirework(targetX, targetY, isHeart);
+    }, 4200);
+
+    // Initial Welcome Firework
+    setTimeout(() => {
+      launchFirework(width * 0.3, height * 0.25, true);
+      setTimeout(() => {
+        launchFirework(width * 0.7, height * 0.22, false);
+      }, 700);
+    }, 1200);
+
+    // ==============================================
+    // 2. MUSIC PLAYER (KASIH PUTIH - GLENN FREDLY)
+    // ==============================================
+    const bgAudio = document.getElementById('bg-audio');
+    const musicPill = document.getElementById('music-pill');
+    const playToggleBtn = document.getElementById('play-toggle-btn');
+    const playIcon = document.getElementById('play-icon');
+    const pauseIcon = document.getElementById('pause-icon');
+    const soundEqualizer = document.getElementById('sound-equalizer');
+    const vinylDisc = document.getElementById('vinyl-disc');
+    const musicStatusTxt = document.getElementById('music-status-txt');
+
+    let isAudioPlaying = false;
+
+    function playAudio() {
+      bgAudio.play().then(() => {
+        isAudioPlaying = true;
+        playIcon.classList.add('hidden');
+        pauseIcon.classList.remove('hidden');
+        soundEqualizer.classList.remove('paused');
+        vinylDisc.classList.remove('paused');
+        musicStatusTxt.textContent = 'Memutar: Kasih Putih 🎵';
+        musicStatusTxt.classList.add('text-pink-300');
+      }).catch(err => {
+        console.log('Autoplay restriction:', err);
+        musicStatusTxt.textContent = 'Klik untuk putar lagu 🎵';
+      });
+    }
+
+    function pauseAudio() {
+      bgAudio.pause();
+      isAudioPlaying = false;
+      playIcon.classList.remove('hidden');
+      pauseIcon.classList.add('hidden');
+      soundEqualizer.classList.add('paused');
+      vinylDisc.classList.add('paused');
+      musicStatusTxt.textContent = 'Lagu dijeda ⏸️';
+      musicStatusTxt.classList.remove('text-pink-300');
+    }
+
+    function toggleAudio() {
+      if (isAudioPlaying) {
+        pauseAudio();
+      } else {
+        playAudio();
+      }
+    }
+
+    musicPill.addEventListener('click', toggleAudio);
+
+    // Try auto-play on first user interaction anywhere
+    function enableAudioOnFirstTouch() {
+      if (!isAudioPlaying) {
+        playAudio();
+      }
+      window.removeEventListener('click', enableAudioOnFirstTouch);
+      window.removeEventListener('touchstart', enableAudioOnFirstTouch);
+    }
+    window.addEventListener('click', enableAudioOnFirstTouch, { once: true });
+    window.addEventListener('touchstart', enableAudioOnFirstTouch, { once: true });
+
+    // ==============================================
+    // 3. ENVELOPE OPENING & 3D CARD
+    // ==============================================
     const envelopeStage = document.getElementById('envelope-stage');
     const envelopeBox = document.getElementById('envelope-box');
     const waxSeal = document.getElementById('wax-seal');
     const letterStage = document.getElementById('letter-stage');
     const reopenBtn = document.getElementById('reopen-btn');
+    const letterCard = document.getElementById('letter-card');
 
     function openEnvelope() {
+      playAudio(); // Make sure music begins playing
       envelopeBox.classList.add('opened');
       
-      // Little burst of heart particles on break of the seal
+      // Fire heart firework from envelope location!
+      const rect = envelopeBox.getBoundingClientRect();
+      launchFirework(rect.left + rect.width / 2, rect.top + rect.height * 0.35, true);
+
+      // Sweet burst of heart particles
       confetti({
-        particleCount: 25,
-        spread: 60,
+        particleCount: 35,
+        spread: 70,
         origin: { y: 0.55 },
-        colors: ['#fb7192', '#f43f6e', '#fecdd7'],
-        shapes: ['circle']
+        colors: ['#fb7192', '#f43f6e', '#fecdd7', '#ffffff']
       });
 
-      // After flap flips open, fade out envelope and display letter
+      // Transition to Letter Stage
       setTimeout(() => {
         envelopeStage.classList.add('opacity-0', 'scale-95', 'pointer-events-none');
         
@@ -429,10 +811,15 @@
           envelopeStage.classList.add('hidden');
           letterStage.classList.remove('hidden');
 
-          // Trigger reflow then fade in
           requestAnimationFrame(() => {
             letterStage.classList.remove('opacity-0', 'translate-y-8');
             letterStage.classList.add('opacity-100', 'translate-y-0');
+            
+            // Double firework celebration on reveal
+            setTimeout(() => {
+              launchFirework(width * 0.25, height * 0.2, true);
+              launchFirework(width * 0.75, height * 0.2, false);
+            }, 400);
           });
         }, 500);
       }, 700);
@@ -442,10 +829,9 @@
       e.stopPropagation();
       openEnvelope();
     });
-
     envelopeBox.addEventListener('click', openEnvelope);
 
-    // Return letter to envelope
+    // Return to envelope
     reopenBtn.addEventListener('click', () => {
       letterStage.classList.remove('opacity-100', 'translate-y-0');
       letterStage.classList.add('opacity-0', 'translate-y-8');
@@ -461,86 +847,103 @@
       }, 600);
     });
 
-    // ==========================================
-    // 3. Forgiveness Celebration & Hug Modal
-    // ==========================================
+    // 3D Tilt Card on Mouse Move (Desktop)
+    if (window.matchMedia('(pointer: fine)').matches) {
+      document.addEventListener('mousemove', (e) => {
+        if (letterStage.classList.contains('hidden')) return;
+        const xAxis = (window.innerWidth / 2 - e.pageX) / 45;
+        const yAxis = (window.innerHeight / 2 - e.pageY) / 45;
+        letterCard.style.transform = `rotateY(${xAxis}deg) rotateX(${yAxis}deg)`;
+      });
+    }
+
+    // ==============================================
+    // 4. FORGIVE & PLAYFUL "MASIH KESEL" INTERACTIONS
+    // ==============================================
     const forgiveBtn = document.getElementById('forgive-btn');
-    const hugBtn = document.getElementById('hug-btn');
+    const stillMadBtn = document.getElementById('still-mad-btn');
     const forgiveModal = document.getElementById('forgive-modal');
     const closeModalBtn = document.getElementById('close-modal-btn');
-    const hugToast = document.getElementById('hug-toast');
+    const grandFireworksBtn = document.getElementById('grand-fireworks-btn');
+    const cuteToast = document.getElementById('cute-toast');
+    const toastText = document.getElementById('toast-text');
+    const toastIcon = document.getElementById('toast-icon');
 
-    function triggerSweetBlossoms() {
-      const count = 200;
-      const defaults = {
-        origin: { y: 0.7 }
-      };
+    // Grand celebration fireworks show
+    function triggerGrandFireworks() {
+      let count = 0;
+      const interval = setInterval(() => {
+        const x = width * (0.15 + Math.random() * 0.7);
+        const y = height * (0.12 + Math.random() * 0.35);
+        launchFirework(x, y, Math.random() > 0.3);
+        count++;
+        if (count >= 14) clearInterval(interval);
+      }, 250);
 
-      function fire(particleRatio, opts) {
-        confetti(Object.assign({}, defaults, opts, {
-          particleCount: Math.floor(count * particleRatio)
-        }));
-      }
-
-      fire(0.25, {
-        spread: 26,
-        startVelocity: 55,
-        colors: ['#fda4b8', '#fb7192', '#ffffff']
-      });
-      fire(0.2, {
-        spread: 60,
-        colors: ['#f43f6e', '#fecdd7', '#ffe4e9']
-      });
-      fire(0.35, {
+      // Also trigger confetti bursts
+      confetti({
+        particleCount: 100,
         spread: 100,
-        decay: 0.91,
-        scalar: 0.8
-      });
-      fire(0.1, {
-        spread: 120,
-        startVelocity: 25,
-        decay: 0.92,
-        colors: ['#ffccd5', '#e11d53']
-      });
-      fire(0.1, {
-        spread: 120,
-        startVelocity: 45,
+        origin: { y: 0.6 },
+        colors: ['#fda4b8', '#fb7192', '#ffffff', '#ffd166', '#a855f7']
       });
     }
 
     forgiveBtn.addEventListener('click', () => {
-      triggerSweetBlossoms();
+      triggerGrandFireworks();
       setTimeout(() => {
         forgiveModal.classList.remove('opacity-0', 'pointer-events-none');
-        forgiveModal.querySelector('div').classList.remove('scale-95');
+        forgiveModal.querySelector('div').classList.remove('scale-90');
         forgiveModal.querySelector('div').classList.add('scale-100');
-      }, 400);
+      }, 500);
     });
 
     closeModalBtn.addEventListener('click', () => {
       forgiveModal.classList.add('opacity-0', 'pointer-events-none');
       forgiveModal.querySelector('div').classList.remove('scale-100');
-      forgiveModal.querySelector('div').classList.add('scale-95');
+      forgiveModal.querySelector('div').classList.add('scale-90');
+      showToast('🤍 Peluk erat Flowee sayang selamanya...', '🥰');
     });
 
-    // Hug Toast Action
-    let toastTimeout;
-    hugBtn.addEventListener('click', () => {
-      clearTimeout(toastTimeout);
-      hugToast.classList.remove('opacity-0', 'pointer-events-none');
-      hugToast.classList.add('opacity-100');
+    grandFireworksBtn.addEventListener('click', () => {
+      triggerGrandFireworks();
+      showToast('🎆 Kembang api cinta terus mekar untukmu!', '💖');
+    });
 
-      confetti({
-        particleCount: 15,
-        spread: 45,
-        origin: { y: 0.85 },
-        colors: ['#ffffff', '#fecdd7']
-      });
+    // Playful "Masih Kesel" Button Behavior
+    const madMessages = [
+      { msg: 'Jangan ngambek lagi dong sayang 🥺', icon: '🥺' },
+      { msg: 'Janji nanti aku beliin makanan/minuman favoritmu! 🍦🍰', icon: '🧋' },
+      { msg: 'Sini peluk duluuu, jangan cemberut ya manis 🤍', icon: '🫂' },
+      { msg: 'Tuh kan... tombol maafinnya makin gede tuh, dipencet ya! 👉👈', icon: '🌸' }
+    ];
+    let madClickCount = 0;
 
-      toastTimeout = setTimeout(() => {
-        hugToast.classList.remove('opacity-100');
-        hugToast.classList.add('opacity-0', 'pointer-events-none');
+    let toastTimer;
+    function showToast(text, icon = '🥺') {
+      clearTimeout(toastTimer);
+      toastText.textContent = text;
+      toastIcon.textContent = icon;
+      cuteToast.classList.remove('opacity-0', 'pointer-events-none');
+      cuteToast.classList.add('opacity-100');
+      toastTimer = setTimeout(() => {
+        cuteToast.classList.remove('opacity-100');
+        cuteToast.classList.add('opacity-0', 'pointer-events-none');
       }, 3500);
+    }
+
+    stillMadBtn.addEventListener('click', () => {
+      const current = madMessages[madClickCount % madMessages.length];
+      madClickCount++;
+      showToast(current.msg, current.icon);
+
+      // Make the "Ya, Dimaafin" button grow bigger and more prominent!
+      const currentScale = 1 + (madClickCount * 0.08);
+      forgiveBtn.style.transform = `scale(${Math.min(currentScale, 1.35)})`;
+      forgiveBtn.classList.add('ring-4', 'ring-pink-300');
+
+      // Slightly move or wiggle still-mad button
+      stillMadBtn.style.transform = `translate(${(Math.random() - 0.5) * 20}px, ${(Math.random() - 0.5) * 15}px)`;
     });
   </script>
 </body>
