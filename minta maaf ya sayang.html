@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Untuk Flowee Sayang 🌸 - Maafin Aku Ya</title>
+  <title>A Letter for Flowee 🌸 - I Am Truly Sorry</title>
   
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -154,35 +154,22 @@
       animation: pulseGlow 2.3s infinite;
     }
 
-    /* Music equalizer visualizer bar animation */
+    /* Discreet sound waves animation on audio toggle button */
     @keyframes soundBar {
-      0%, 100% { height: 4px; }
-      50% { height: 16px; }
+      0%, 100% { height: 3px; }
+      50% { height: 13px; }
     }
     .sound-bar {
-      width: 3px;
+      width: 2.5px;
       background: #e11d53;
       border-radius: 99px;
       animation: soundBar 1.2s ease-in-out infinite;
     }
     .sound-bar:nth-child(2) { animation-delay: 0.2s; animation-duration: 0.9s; }
     .sound-bar:nth-child(3) { animation-delay: 0.4s; animation-duration: 1.4s; }
-    .sound-bar:nth-child(4) { animation-delay: 0.1s; animation-duration: 1.1s; }
     .paused .sound-bar {
       animation-play-state: paused;
-      height: 4px !important;
-    }
-
-    /* Floating music disc */
-    @keyframes spinDisc {
-      from { transform: rotate(0deg); }
-      to { transform: rotate(360deg); }
-    }
-    .spin-disc {
-      animation: spinDisc 6s linear infinite;
-    }
-    .paused .spin-disc {
-      animation-play-state: paused;
+      height: 3px !important;
     }
 
     /* Runaway button smooth dodge styling */
@@ -198,65 +185,25 @@
   <!-- Ambient Fireworks & Petals Canvas -->
   <canvas id="fx-canvas"></canvas>
 
-  <!-- ============================================== -->
-  <!-- FLOATING MUSIC PLAYER (Kasih Putih)            -->
-  <!-- ============================================== -->
-  <header class="fixed top-4 sm:top-6 z-40 max-w-xl w-[92%] sm:w-auto">
-    <div id="music-pill" class="flex items-center gap-3 px-4 py-2.5 rounded-full bg-white/90 backdrop-blur-xl border border-pink-200/90 shadow-lg shadow-pink-500/10 text-neutral-800 transition-all hover:border-pink-400 cursor-pointer">
-      <!-- Vinyl Disc Icon -->
-      <div class="relative w-9 h-9 rounded-full bg-gradient-to-tr from-neutral-800 to-pink-900 border border-pink-300 flex items-center justify-center shadow-inner overflow-hidden flex-shrink-0">
-        <div id="vinyl-disc" class="w-full h-full flex items-center justify-center spin-disc paused">
-          <div class="w-4 h-4 rounded-full bg-gradient-to-tr from-pink-400 to-rose-400 flex items-center justify-center shadow">
-            <div class="w-1.5 h-1.5 rounded-full bg-neutral-900"></div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Song Details & Sound Waves -->
-      <div class="flex flex-col min-w-0 pr-1">
-        <div class="flex items-center gap-2">
-          <span class="font-sans text-xs font-semibold text-neutral-800 tracking-wide truncate">Kasih Putih</span>
-          <span class="text-[10px] px-1.5 py-0.5 rounded-full bg-pink-100 text-flowee-700 font-medium">Glenn Fredly</span>
-        </div>
-        <span id="music-status-txt" class="text-[11px] text-neutral-500 truncate font-sans">
-          Buka amplop untuk memutar lagu 💌
-        </span>
-      </div>
-
-      <!-- Equalizer Visualizer Bars -->
-      <div id="sound-equalizer" class="flex items-end gap-0.5 h-4 px-1 paused flex-shrink-0">
-        <span class="sound-bar"></span>
-        <span class="sound-bar"></span>
-        <span class="sound-bar"></span>
-        <span class="sound-bar"></span>
-      </div>
-
-      <!-- Play / Pause Icon Button -->
-      <button id="play-toggle-btn" class="w-8 h-8 rounded-full bg-pink-100 hover:bg-pink-200 text-flowee-600 flex items-center justify-center transition-all flex-shrink-0 active:scale-95" aria-label="Toggle Playback">
-        <svg id="play-icon" class="w-4 h-4 ml-0.5" fill="currentColor" viewBox="0 0 24 24">
-          <path d="M8 5v14l11-7z"/>
-        </svg>
-        <svg id="pause-icon" class="w-4 h-4 hidden" fill="currentColor" viewBox="0 0 24 24">
-          <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
-        </svg>
-      </button>
-    </div>
-  </header>
-
-  <!-- Audio Element (Primary local with remote fallback) -->
+  <!-- Audio Element (Playing Kasih Putih smoothly in background once opened) -->
   <audio id="bg-audio" loop preload="auto">
     <source src="kasih-putih.mp3" type="audio/mpeg">
     <source src="https://archive.org/download/juicy-luicy-terlalu-tinggi-official-music-video/GLENN%20FREDLY%20-%20Kasih%20Putih.mp3" type="audio/mpeg">
   </audio>
 
-  <!-- Sky Fireworks Interaction Hint (Active only after opening) -->
-  <div id="sky-hint" class="fixed top-18 sm:top-20 z-30 pointer-events-none text-center hidden opacity-0 transition-opacity duration-700">
-    <span class="text-[11px] font-sans tracking-widest text-flowee-700 font-medium uppercase px-3 py-1 rounded-full bg-white/80 border border-pink-200 shadow-sm backdrop-blur-sm">
-      ✨ Sentuh / klik layar mana saja untuk kembang api ✨
-    </span>
-  </div>
+  <!-- Discreet Floating Audio Toggle (Bottom Right Corner) -->
+  <aside class="fixed bottom-5 right-5 z-40">
+    <button id="audio-toggle-btn" class="flex items-center gap-2 px-3.5 py-2 rounded-full bg-white/80 hover:bg-white backdrop-blur-md border border-pink-200/90 shadow-md text-flowee-600 transition-all hover:scale-105 active:scale-95" aria-label="Toggle Background Music">
+      <div id="sound-equalizer" class="flex items-end gap-0.5 h-3.5 paused">
+        <span class="sound-bar"></span>
+        <span class="sound-bar"></span>
+        <span class="sound-bar"></span>
+      </div>
+      <span id="audio-btn-label" class="font-sans text-xs font-medium text-neutral-600">Music</span>
+    </button>
+  </aside>
 
-  <main class="relative z-10 w-full max-w-2xl my-auto pt-24 pb-12">
+  <main class="relative z-10 w-full max-w-2xl my-auto py-8">
 
     <!-- ============================================== -->
     <!-- STAGE 1: ENVELOPE (Tap to open)                -->
@@ -264,10 +211,10 @@
     <div id="envelope-stage" class="envelope-perspective w-full max-w-md mx-auto transition-all duration-700 ease-in-out">
       <div class="text-center mb-6">
         <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium tracking-widest uppercase bg-white/80 border border-pink-200/80 text-flowee-600 shadow-sm">
-          <span>🌸</span> Khusus Untuk Flowee Sayang
+          <span>🌸</span> Handcrafted for Flowee
         </span>
-        <h2 class="font-serif text-3xl sm:text-4xl text-neutral-800 mt-2 italic font-normal">Ada Surat Untukmu</h2>
-        <p class="font-sans text-xs text-neutral-500 mt-1">Tekan segel lilin hati untuk membuka isi hatiku</p>
+        <h2 class="font-serif text-3xl sm:text-4xl text-neutral-800 mt-2 italic font-normal">You Have a Letter</h2>
+        <p class="font-sans text-xs text-neutral-500 mt-1">Tap the wax seal to open my heart to you</p>
       </div>
 
       <!-- Envelope Box -->
@@ -282,11 +229,11 @@
         <div class="w-[84%] h-[75%] rounded-t-2xl bg-white/95 border border-pink-100 shadow-inner flex flex-col items-center justify-center p-6 text-center transform translate-y-3">
           <div class="w-12 h-1 bg-pink-200 mb-3 rounded-full"></div>
           <span class="font-script text-3xl sm:text-4xl text-flowee-600">Dearest Flowee</span>
-          <p class="font-serif text-xs italic text-neutral-400 mt-1 tracking-wider">Permintaan maaf yang tulus dari lubuk hatiku...</p>
+          <p class="font-serif text-xs italic text-neutral-400 mt-1 tracking-wider">A sincere apology from deep within...</p>
         </div>
 
         <!-- Wax Seal Button -->
-        <button id="wax-seal" class="wax-seal pulse-seal group" aria-label="Buka Surat">
+        <button id="wax-seal" class="wax-seal pulse-seal group" aria-label="Open Letter">
           <svg class="w-9 h-9 text-white transform transition-transform group-hover:scale-110 drop-shadow-md" viewBox="0 0 24 24" fill="currentColor">
             <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
           </svg>
@@ -308,35 +255,35 @@
         <div class="flex items-center justify-between border-b border-rose-100/90 pb-5">
           <div class="flex items-center gap-2">
             <span class="inline-block w-2.5 h-2.5 rounded-full bg-flowee-500 animate-ping"></span>
-            <span class="font-sans text-xs uppercase tracking-widest font-semibold text-flowee-600">Janji Tulus Dari Hati</span>
+            <span class="font-sans text-xs uppercase tracking-widest font-semibold text-flowee-600">A Solemn Promise</span>
           </div>
-          <span class="font-script text-2xl text-flowee-500">Maafin aku ya sayang 🤍</span>
+          <span class="font-script text-2xl text-flowee-500">Forgive my heart 🤍</span>
         </div>
 
         <!-- The Letter Body -->
         <article class="mt-8 space-y-6">
           <div class="space-y-1">
-            <h3 class="font-script text-3xl sm:text-5xl text-flowee-600 leading-tight">Sayangku Flowee 🌸,</h3>
+            <h3 class="font-script text-3xl sm:text-5xl text-flowee-600 leading-tight">My Sweetest Flowee 🌸,</h3>
             <h1 class="font-serif text-3xl sm:text-4xl md:text-5xl text-neutral-900 font-normal leading-tight">
-              Aku minta maaf yang sebesar-besarnya ya...
+              I am so deeply sorry, my love.
             </h1>
           </div>
 
           <div class="font-serif text-lg sm:text-xl text-neutral-700 leading-relaxed space-y-4 pt-2">
             <p>
-              Aku bener-bener nyesel dan sedih banget kalau sampai bikin kamu kepikiran, kecewa, atau ngerasa sendirian. Kamu itu orang yang paling berharga buat aku, dan bikin kamu sedih adalah hal terakhir yang pernah aku inginkan di dunia ini.
+              I failed to be there when you needed me most, leaving you to carry the heavy weight of sadness alone. It completely breaks my heart knowing that my absence caused you pain during the quiet hours when all you needed was a warm shoulder, an open heart, and someone to hold you tight.
             </p>
 
             <blockquote class="my-5 p-5 bg-gradient-to-r from-flowee-50 via-white to-flowee-50/50 rounded-2xl border-l-4 border-flowee-400 font-serif italic text-neutral-800 text-lg sm:text-xl shadow-sm">
-              "Biarkanlah rasa cintaku mengalir di hatimu... seperti kasih putih yang suci, aku janji bakal selalu ada, jagain kamu, dan gak akan bikin kamu sedih lagi."
+              "Your heart was aching, and instead of sheltering you from the storm, I was away. There is no excuse for making the person I cherish most in this world feel deserted."
             </blockquote>
 
             <p>
-              Setiap senyuman kamu itu obat buat aku, dan setiap air mata kamu adalah luka terdalam buat aku. Makasih udah selalu sabar menghadapi aku. Aku mau terus belajar jadi pasangan yang jauh lebih baik, lebih peka, dan selalu ada buat nemenin setiap langkah kamu.
+              Please know that your tears are never a burden, and your feelings are precious to me. I don’t take your presence in my life for granted, not for a single breath. I promise to listen with all my soul, to stay patiently by your side, and to never let you feel alone again.
             </p>
 
             <p class="font-medium text-flowee-700 text-xl font-serif">
-              Mau kan maafin aku dan kita senyum bahagia bareng lagi? 🥺👉👈
+              Will you grant me the chance to make it right and bring the warm smile back to your face? 🥺👉👈
             </p>
           </div>
 
@@ -344,38 +291,38 @@
           <div class="grid grid-cols-1 sm:grid-cols-3 gap-3.5 pt-4 font-sans text-xs">
             <div class="p-4 rounded-2xl bg-white/90 border border-pink-100 shadow-sm flex flex-col items-center text-center transition-all hover:scale-105 hover:shadow-md">
               <span class="text-2xl mb-1.5">👂</span>
-              <strong class="text-neutral-800 font-semibold mb-0.5">Selalu Mendengarkan</strong>
-              <span class="text-neutral-500">Keluh kesah dan ceritamu selalu jadi prioritasku.</span>
+              <strong class="text-neutral-800 font-semibold mb-0.5">Always Listening</strong>
+              <span class="text-neutral-500">Every single word and every silence will be cherished.</span>
             </div>
             <div class="p-4 rounded-2xl bg-white/90 border border-pink-100 shadow-sm flex flex-col items-center text-center transition-all hover:scale-105 hover:shadow-md">
               <span class="text-2xl mb-1.5">🫂</span>
-              <strong class="text-neutral-800 font-semibold mb-0.5">Gak Akan Sendirian</strong>
-              <span class="text-neutral-500">Kapanpun kamu butuh, pelukanku selalu siap buatmu.</span>
+              <strong class="text-neutral-800 font-semibold mb-0.5">Never Alone</strong>
+              <span class="text-neutral-500">Ready to rush to your side whenever you need warmth.</span>
             </div>
             <div class="p-4 rounded-2xl bg-white/90 border border-pink-100 shadow-sm flex flex-col items-center text-center transition-all hover:scale-105 hover:shadow-md">
               <span class="text-2xl mb-1.5">🤍</span>
-              <strong class="text-neutral-800 font-semibold mb-0.5">Kasih Tulus Selamanya</strong>
-              <span class="text-neutral-500">Menjaga hatimu dengan sepenuh cinta dan kesetiaan.</span>
+              <strong class="text-neutral-800 font-semibold mb-0.5">Endless Devotion</strong>
+              <span class="text-neutral-500">To protect and treasure your fragile heart forever.</span>
             </div>
           </div>
 
           <!-- Sign off & Action Buttons -->
           <div class="pt-6 flex flex-col sm:flex-row sm:items-end justify-between border-t border-rose-100/90 gap-5">
             <div>
-              <p class="font-serif italic text-sm text-neutral-500">Yang selalu sayang sama kamu,</p>
-              <p class="font-script text-3xl sm:text-4xl text-flowee-600 mt-1">Pacarmu yang paling sayang kamu ❤️</p>
+              <p class="font-serif italic text-sm text-neutral-500">Forever yours, with all my remorse,</p>
+              <p class="font-script text-3xl sm:text-4xl text-flowee-600 mt-1">Yours Truly ❤️</p>
             </div>
 
             <!-- Interactive Decision Buttons Area -->
             <div class="flex items-center gap-3 relative min-h-[56px]" id="decision-buttons">
-              <!-- Playful "Masih Kesel" Runaway Button -->
+              <!-- Playful "Still Mad" Runaway Button -->
               <button id="still-mad-btn" class="px-5 py-3 rounded-2xl font-sans text-xs sm:text-sm font-semibold text-rose-700 bg-rose-100/90 hover:bg-rose-200 border border-rose-200 shadow-sm active:scale-95 transition-all">
-                Masih kesel 😤
+                Still Mad 😤
               </button>
 
               <!-- "I Forgive You" Hero Button -->
               <button id="forgive-btn" class="px-7 py-3.5 rounded-2xl font-sans text-sm sm:text-base font-bold text-white bg-gradient-to-r from-flowee-500 via-rose-500 to-flowee-600 hover:from-flowee-600 hover:to-flowee-700 active:scale-95 shadow-lg shadow-pink-500/25 transition-all flex items-center gap-2 group">
-                <span class="group-hover:scale-105 transition-transform">Ya, Dimaafin! 🌸</span>
+                <span class="group-hover:scale-105 transition-transform">I Forgive You! 🌸</span>
                 <span class="text-lg animate-bounce">✨</span>
               </button>
             </div>
@@ -387,7 +334,7 @@
       <div class="text-center mt-6">
         <button id="reopen-btn" class="text-xs font-sans text-neutral-400 hover:text-flowee-600 transition-colors inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-white/80 border border-pink-100 shadow-sm">
           <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h10a8 8 0 018 8v2M3 10l6 6m-6-6l6-6"/></svg>
-          Tutup kembali ke dalam amplop
+          Put letter back in envelope
         </button>
       </div>
     </div>
@@ -401,17 +348,17 @@
       <div class="text-5xl mb-3 animate-bounce">
         🎆💖🌸
       </div>
-      <h3 class="font-serif text-3xl text-neutral-900 font-bold mb-2">Yeeey! Makasih Banyak Flowee Sayang! 🥰</h3>
+      <h3 class="font-serif text-3xl text-neutral-900 font-bold mb-2">Yay! Thank You So Much, Flowee! 🥰</h3>
       <p class="font-sans text-sm text-neutral-600 leading-relaxed mb-6">
-        Mendengar kata maaf darimu rasanya seperti kembang api terindah di langit malam. Aku janji bakal terus bikin kamu tersenyum bahagia dan melindungimu setiap hari!
+        Hearing your forgiveness feels like the most breathtaking fireworks lighting up the night sky. I promise to always cherish you, make you smile, and never let you feel lonely again!
       </p>
 
       <div class="space-y-3">
         <button id="grand-fireworks-btn" class="w-full py-3.5 rounded-2xl bg-gradient-to-r from-flowee-500 to-rose-600 hover:from-flowee-600 hover:to-rose-700 text-white font-sans text-sm font-semibold shadow-lg shadow-pink-500/30 transition-all active:scale-95 flex items-center justify-center gap-2">
-          <span>Nyalain Kembang Api Lebih Banyak! 🎆</span>
+          <span>Light Up More Fireworks! 🎆</span>
         </button>
         <button id="close-modal-btn" class="w-full py-2.5 rounded-xl text-neutral-500 hover:text-neutral-800 font-sans text-xs font-medium transition-all">
-          Peluk kamu erat-erat 🤍
+          Hold you in a warm hug 🤍
         </button>
       </div>
     </div>
@@ -420,7 +367,7 @@
   <!-- Cute Notification Toast -->
   <div id="cute-toast" class="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 px-5 py-3 rounded-full bg-neutral-900/90 text-white font-sans text-xs sm:text-sm tracking-wide shadow-2xl backdrop-blur-md opacity-0 pointer-events-none transition-all duration-300 flex items-center gap-2.5 border border-pink-300/30">
     <span id="toast-icon" class="text-base">🥺</span>
-    <span id="toast-text">Jangan ngambek lagi ya sayang...</span>
+    <span id="toast-text">Don't be mad anymore, my love...</span>
   </div>
 
   <!-- ============================================== -->
@@ -538,7 +485,6 @@
           // Parametric Heart Formula
           for (let i = 0; i < particleCount; i++) {
             const t = (Math.PI * 2 * i) / particleCount;
-            // Heart curve equation
             const hx = 16 * Math.pow(Math.sin(t), 3);
             const hy = -(13 * Math.cos(t) - 5 * Math.cos(2*t) - 2 * Math.cos(3*t) - Math.cos(4*t));
             const speedScale = 0.22 + Math.random() * 0.05;
@@ -679,7 +625,7 @@
     // Interactive fireworks on screen click (ACTIVE ONLY AFTER OPENING)
     window.addEventListener('pointerdown', (e) => {
       if (!fireworksActive) return;
-      if (e.target.closest('button') || e.target.closest('#music-pill') || e.target.closest('a')) {
+      if (e.target.closest('button') || e.target.closest('a')) {
         return;
       }
       const isHeart = Math.random() > 0.4;
@@ -696,47 +642,34 @@
         const targetY = height * (0.15 + Math.random() * 0.35);
         const isHeart = Math.random() > 0.45;
         launchFirework(targetX, targetY, isHeart);
-      }, 4000);
+      }, 3800);
     }
 
     // ==============================================
-    // 2. MUSIC PLAYER (KASIH PUTIH - GLENN FREDLY)
+    // 2. BACKGROUND MUSIC ENGINE (KASIH PUTIH)
     // ==============================================
     const bgAudio = document.getElementById('bg-audio');
-    const musicPill = document.getElementById('music-pill');
-    const playToggleBtn = document.getElementById('play-toggle-btn');
-    const playIcon = document.getElementById('play-icon');
-    const pauseIcon = document.getElementById('pause-icon');
+    const audioToggleBtn = document.getElementById('audio-toggle-btn');
     const soundEqualizer = document.getElementById('sound-equalizer');
-    const vinylDisc = document.getElementById('vinyl-disc');
-    const musicStatusTxt = document.getElementById('music-status-txt');
+    const audioBtnLabel = document.getElementById('audio-btn-label');
 
     let isAudioPlaying = false;
 
     function playAudio() {
       bgAudio.play().then(() => {
         isAudioPlaying = true;
-        playIcon.classList.add('hidden');
-        pauseIcon.classList.remove('hidden');
         soundEqualizer.classList.remove('paused');
-        vinylDisc.classList.remove('paused');
-        musicStatusTxt.textContent = 'Memutar: Kasih Putih 🎵';
-        musicStatusTxt.classList.add('text-flowee-600', 'font-medium');
+        audioBtnLabel.textContent = 'Mute';
       }).catch(err => {
         console.log('Autoplay restriction:', err);
-        musicStatusTxt.textContent = 'Klik untuk putar lagu 🎵';
       });
     }
 
     function pauseAudio() {
       bgAudio.pause();
       isAudioPlaying = false;
-      playIcon.classList.remove('hidden');
-      pauseIcon.classList.add('hidden');
       soundEqualizer.classList.add('paused');
-      vinylDisc.classList.add('paused');
-      musicStatusTxt.textContent = 'Lagu dijeda ⏸️';
-      musicStatusTxt.classList.remove('text-flowee-600', 'font-medium');
+      audioBtnLabel.textContent = 'Play';
     }
 
     function toggleAudio() {
@@ -747,7 +680,7 @@
       }
     }
 
-    musicPill.addEventListener('click', toggleAudio);
+    audioToggleBtn.addEventListener('click', toggleAudio);
 
     // ==============================================
     // 3. ENVELOPE OPENING & CARD TRANSITION
@@ -758,18 +691,13 @@
     const letterStage = document.getElementById('letter-stage');
     const reopenBtn = document.getElementById('reopen-btn');
     const letterCard = document.getElementById('letter-card');
-    const skyHint = document.getElementById('sky-hint');
 
     function openEnvelope() {
       // 1. Activate Fireworks Engine
       fireworksActive = true;
       startAmbientFireworks();
 
-      // Show hint banner
-      skyHint.classList.remove('hidden');
-      setTimeout(() => skyHint.classList.add('opacity-100'), 100);
-
-      // 2. Start playing "Kasih Putih" music
+      // 2. Play "Kasih Putih" music smoothly
       playAudio();
 
       envelopeBox.classList.add('opened');
@@ -818,8 +746,6 @@
     reopenBtn.addEventListener('click', () => {
       letterStage.classList.remove('opacity-100', 'translate-y-0');
       letterStage.classList.add('opacity-0', 'translate-y-8');
-      skyHint.classList.remove('opacity-100');
-      setTimeout(() => skyHint.classList.add('hidden'), 700);
 
       setTimeout(() => {
         letterStage.classList.add('hidden');
@@ -887,12 +813,12 @@
       forgiveModal.classList.add('opacity-0', 'pointer-events-none');
       forgiveModal.querySelector('div').classList.remove('scale-100');
       forgiveModal.querySelector('div').classList.add('scale-90');
-      showToast('🤍 Peluk erat Flowee sayang selamanya...', '🥰');
+      showToast('Wrapped in a warm, tender hug forever... 🤍', '🥰');
     });
 
     grandFireworksBtn.addEventListener('click', () => {
       triggerGrandFireworks();
-      showToast('🎆 Kembang api cinta terus mekar untukmu!', '💖');
+      showToast('Fireworks of love blooming just for you! 💖', '🎆');
     });
 
     // Toast helper
@@ -910,16 +836,16 @@
     }
 
     // ==============================================
-    // 5. RUNAWAY BUTTON ("MASIH KESEL" LARI-LARI)
+    // 5. RUNAWAY BUTTON ("STILL MAD" DODGES)
     // ==============================================
     const runawayMessages = [
-      { text: 'Eits gak kena! 😜', icon: '🏃' },
-      { text: 'Gak boleh ngambek dong! 😝', icon: '🙈' },
-      { text: 'Ayo dimaafin aja pliss 🥺', icon: '👉👈' },
-      { text: 'Kejar kalau bisa wlee 🏃💨', icon: '😝' },
-      { text: 'Janji beliin martabak & es krim! 🍦🍰', icon: '🧋' },
-      { text: 'Tombol ini anti-ngambek lho 🛡️', icon: '😜' },
-      { text: 'Tuh kan... tombol maafinnya makin gede tuh! 🌸', icon: '🥰' }
+      { text: "Oops, missed me! 😜", icon: '🏃' },
+      { text: "Can't catch me! 😝", icon: '🙈' },
+      { text: "No being mad allowed! 🥺", icon: '👉👈' },
+      { text: "Catch me if you can 🏃💨", icon: '😝' },
+      { text: "I'll buy your favorite snacks & boba! 🧋🍰", icon: '🍦' },
+      { text: "This button is anger-proof 🛡️", icon: '😜' },
+      { text: "Look, the forgive button is growing! 🌸", icon: '🥰' }
     ];
     let runawayCount = 0;
 
@@ -941,7 +867,7 @@
       // Safe bounds within visible viewport
       const minX = padding;
       const maxX = Math.max(minX, window.innerWidth - btnWidth - padding);
-      const minY = padding + 75; // leave space for top music pill
+      const minY = padding + 40;
       const maxY = Math.max(minY, window.innerHeight - btnHeight - padding);
 
       const randomX = Math.floor(minX + Math.random() * (maxX - minX));
@@ -956,7 +882,7 @@
       stillMadBtn.textContent = current.text;
       showToast(current.text, current.icon);
 
-      // Make the "Ya, Dimaafin" button grow larger & more inviting each time!
+      // Make the "I Forgive You" button grow larger & more inviting each time!
       const currentScale = 1 + Math.min(runawayCount * 0.08, 0.45);
       forgiveBtn.style.transform = `scale(${currentScale})`;
       forgiveBtn.classList.add('ring-4', 'ring-pink-300', 'shadow-2xl');
